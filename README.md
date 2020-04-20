@@ -12,10 +12,8 @@
     </dependency>
 
 #### 配置文件
-    //支付key不能泄露
-    r3.pipay.developer-key=1234567890
-    //支付网关
-    r3.pipay.url=http://tp.piplus.cn/pay/
+    //测试支付网关
+    r3.pipay.url=https://test.pay2.piplus.cn/pay/
 
 
 #### 代码实例
