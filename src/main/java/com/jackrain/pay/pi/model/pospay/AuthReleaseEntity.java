@@ -1,6 +1,6 @@
 package com.jackrain.pay.pi.model.pospay;
 
-import com.jackrain.nea.pay.api.model.PiPayEntity;
+import com.jackrain.pay.pi.model.PiPayEntity;
 import lombok.Data;
 
 /**

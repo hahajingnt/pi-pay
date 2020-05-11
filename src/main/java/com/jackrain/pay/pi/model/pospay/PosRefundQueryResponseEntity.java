@@ -70,6 +70,12 @@ public class PosRefundQueryResponseEntity extends PiPayResponseEntity {
         private String orderStatus;
 
         /**
+         * 退款状态 成功 失败 退款中
+         */
+        @JSONField(name = "refund_status")
+        private String refundStatus;
+
+        /**
          * 订单创建时间
          */
         @JSONField(name = "create_time")
