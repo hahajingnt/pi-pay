@@ -62,10 +62,10 @@ public class PiPayEntity {
         if(params.get("goods_detail") != null){
             JSONArray jsonArray= JSON.parseArray(params.get("goods_detail"));
             for(int i=0;i<jsonArray.size();i++){
-                JSONObject jsonObject=sortedJSONObejct(JSON.parseObject(jsonArray.get(i).toString()));
+                JSONObject jsonObject=sortedJSONObejct(jsonArray.getJSONObject(i));
                 jsonArray.set(i,jsonObject);
             }
-            params.put("goods_detail",jsonArray.toString());
+            params.put("goods_detail",jsonArray.toJSONString());
         }
 
         //拼接字符串

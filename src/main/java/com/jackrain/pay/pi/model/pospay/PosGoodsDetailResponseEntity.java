@@ -14,26 +14,26 @@ public class PosGoodsDetailResponseEntity {
     /**
      * 商户系统中的商品编号
      */
-    @JSONField(name = "good_id")
-    private String goodId;
+    @JSONField(name = "goods_id")
+    private String goodsId;
 
     /**
      * 商品描述信息
      */
-    @JSONField(name = "good_name")
-    private String goodName;
+    @JSONField(name = "goods_name")
+    private String goodsName;
 
     /**
      * 商品所属大类
      */
     @JSONField(name = "good_category")
-    private String goodCategory;
+    private String goodsCategory;
 
     /**
      * 商品单位
      */
     @JSONField(name = "good_unit")
-    private String goodUnit;
+    private String goodsUnit;
 
     /**
      * 商品数量

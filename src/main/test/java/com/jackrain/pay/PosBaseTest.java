@@ -15,9 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.sql.Timestamp;
-import java.util.LinkedHashSet;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @Description :
@@ -48,11 +46,11 @@ public class PosBaseTest {
         log.info(timestamp.toString());
         mircoPayEntity.setTimestamp(timestamp.toString());
         mircoPayEntity.setSubject("测试店");
-        mircoPayEntity.setOutTradeNo("1000040000090");
-        mircoPayEntity.setTotalAmount(10);
+        mircoPayEntity.setOutTradeNo("1000070000018");
+        mircoPayEntity.setTotalAmount(1000000);
         mircoPayEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
-//        mircoPayEntity.setStoreId("Z0211027");
-        mircoPayEntity.setPayChannel("CHINAUMS_ydPAY");
+        mircoPayEntity.setStoreCode("JNBY");
+        mircoPayEntity.setPayChannel("shouqianba");
 //        mircoPayEntity.setDeviceInfo("webPos");
 //        mircoPayEntity.setVipNo("-1");
 //        mircoPayEntity.setPayment("1");
@@ -62,9 +60,9 @@ public class PosBaseTest {
 //        // [{"quantity": "1", "goods_name": "看海", "goods_id": "100020", "price": "36800"}]
 //        JSONObject good = new JSONObject();
 //        good.put("quantity","1");
-//        good.put("goods_name","喜力啤酒500ml瓶装");
+//        good.put("goods_name","塑料袋（250*450+70）");
 //        good.put("goods_id","PJXYA0006");
-//        good.put("price","5.7");
+//        good.put("price","5");
 //        goods.add(good);
 //        JSONObject good2 = new JSONObject();
 //        good2.put("quantity","3");
@@ -78,7 +76,15 @@ public class PosBaseTest {
 //        good3.put("goods_id","QT0000086");
 //        good3.put("price","0.2");
 //        goods.add(good3);
-//        mircoPayEntity.setGoodsDetail(goods);
+
+        List<PosGoodsDetailEntity> goodsDetail = new LinkedList<>();
+        PosGoodsDetailEntity posGoodsDetailEntity = new PosGoodsDetailEntity();
+        posGoodsDetailEntity.setGoodsId("PJXYA0006");
+        posGoodsDetailEntity.setGoodsName("塑料袋（250*450+70）");
+        posGoodsDetailEntity.setPrice("5");
+        posGoodsDetailEntity.setQuantity("1");
+        goodsDetail.add(posGoodsDetailEntity);
+        mircoPayEntity.setGoodsDetail(goodsDetail);
 
        PosPreOrderResponseEntity piPayResponseEntity = piPosPayApi.preorder(mircoPayEntity);
         System.out.println(piPayResponseEntity.toJSONString());
@@ -117,12 +123,13 @@ public class PosBaseTest {
 //        refundEntity.setDeveloperKey("438d66903cf002573c3c0d02f4daa0a9");
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         refundEntity.setTimestamp(timestamp.toString());
-        refundEntity.setOutTradeNo("1000040000094");
+        refundEntity.setOutTradeNo("1000070000093");
 //        refundEntity.setTradeNo("20200403144757000031022321");
-        refundEntity.setOutRefundNo("1000300200060");
+        refundEntity.setOutRefundNo("1000300200063");
         refundEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
-//        refundEntity.setStoreCode("001");
-        refundEntity.setRefundAmount(1);
+        refundEntity.setStoreCode("JNBY");
+        refundEntity.setRefundAmount(5);
+        refundEntity.setPayChannel("shouQianba");
 //        refundEntity.setPayChannel("CHINAUMS_ydPAY");
         piPosPayApi.refund(refundEntity);
 
@@ -141,11 +148,12 @@ public class PosBaseTest {
         refundQueryEntity.setTimestamp(timestamp.toString());
 //        refundQueryEntity.setTradeNo("");
 //        refundQueryEntity.setOutTradeNo("1000040000094");
-        refundQueryEntity.setOutRefundNo("1000300200060");
+        refundQueryEntity.setOutRefundNo("1000300200063");
 //        refundQueryEntity.setCustomerId("48B040170305CDD10CDA6A02B701415A");
         refundQueryEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
 //        refundQueryEntity.setStoreCode("001");
-//        refundQueryEntity.setPayChannel("HwcTonYiPay");
+        refundQueryEntity.setStoreCode("JNBY");
+        refundQueryEntity.setPayChannel("shouQianba");
         piPosPayApi.refundquery(refundQueryEntity);
 
     }

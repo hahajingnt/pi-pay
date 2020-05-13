@@ -179,10 +179,10 @@ public class PosPreOrderEntity extends PiPayEntity {
         paramObject.put("subject",getSubject());
 
         if (!CollectionUtils.isEmpty(getGoodsDetail())){
-            paramObject.put("goods_detail",JSON.toJSONString(getGoodsDetail()));
+            paramObject.put("goods_detail",JSON.parseArray(JSON.toJSONString(getGoodsDetail())));
         }
         if (!CollectionUtils.isEmpty(getTenders())){
-            paramObject.put("tenders",JSON.toJSONString(getTenders()));
+            paramObject.put("tenders",JSON.parseArray(JSON.toJSONString(getTenders())));
         }
 
         JSONObject jsonObject = new JSONObject();
