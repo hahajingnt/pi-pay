@@ -32,6 +32,9 @@ public class RefundResponseEntity extends PiPayResponseEntity {
         @JSONField(name = "out_trade_no")
         private String outTradeNo;
 
+        @JSONField(name = "out_refund_no")
+        private String outRefundNo;
+
         @JSONField(name = "trade_no")
         private String tradeNo;
 
