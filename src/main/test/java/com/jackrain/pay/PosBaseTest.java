@@ -46,11 +46,11 @@ public class PosBaseTest {
         log.info(timestamp.toString());
         mircoPayEntity.setTimestamp(timestamp.toString());
         mircoPayEntity.setSubject("测试店");
-        mircoPayEntity.setOutTradeNo("1000070000018");
-        mircoPayEntity.setTotalAmount(1000000);
+        mircoPayEntity.setOutTradeNo("1000180000031");
+        mircoPayEntity.setTotalAmount(10);
         mircoPayEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
         mircoPayEntity.setStoreCode("JNBY");
-        mircoPayEntity.setPayChannel("shouqianba");
+        mircoPayEntity.setPayChannel("CHINAUMS_POST");
 //        mircoPayEntity.setDeviceInfo("webPos");
 //        mircoPayEntity.setVipNo("-1");
 //        mircoPayEntity.setPayment("1");
@@ -104,10 +104,10 @@ public class PosBaseTest {
         log.info(timestamp.toString());
         orderQueryEntity.setTimestamp(timestamp.toString());
 //        orderQueryEntity.setTradeNo("2019112722001412545718971268");
-        orderQueryEntity.setOutTradeNo("1000040000080");
+        orderQueryEntity.setOutTradeNo("1000180000031");
         orderQueryEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
         orderQueryEntity.setStoreCode("001");
-//        orderQueryEntity.setPayChannel("HwcTonYiPay");
+        orderQueryEntity.setPayChannel("CHINAUMS_POST");
 //        orderQueryEntity.setPayChannel("CHINAUMS_ydPAY");
         piPosPayApi.orderquery(orderQueryEntity);
 
@@ -168,11 +168,12 @@ public class PosBaseTest {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         log.info(timestamp.toString());
         reverseEntity.setTimestamp(timestamp.toString());
-        reverseEntity.setOutTradeNo("1000000000060");
+//        reverseEntity.setOutTradeNo("1000000000060");
+        reverseEntity.setTradeNo("200514999888000017");
 //        reverseEntity.setCustomerId("1905EDBC05E099876D0B044D40A9FD66");
         reverseEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
-        reverseEntity.setStoreCode("商户数据包001");
-//        reverseEntity.setPayChannel("TonYiPay");
+        reverseEntity.setStoreCode("JNBY");
+        reverseEntity.setPayChannel("shouQianba");
         piPosPayApi.reverse(reverseEntity);
 
     }

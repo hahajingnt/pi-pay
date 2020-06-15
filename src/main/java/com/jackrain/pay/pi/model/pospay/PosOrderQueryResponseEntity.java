@@ -64,6 +64,12 @@ public class PosOrderQueryResponseEntity extends PiPayResponseEntity {
         private String orderStatus;
 
         /**
+         * 支付状态
+         */
+        @JSONField(name = "trade_state")
+        private String tradeState;
+
+        /**
          * 订单创建时间
          */
         @JSONField(name = "create_time")

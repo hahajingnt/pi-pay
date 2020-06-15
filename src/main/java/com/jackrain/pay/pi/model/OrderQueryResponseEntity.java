@@ -23,6 +23,9 @@ public class OrderQueryResponseEntity extends PiPayResponseEntity {
     @Data
     public class ResponseEntity{
 
+        @JSONField(name = "sign")
+        private String sign;
+
         @JSONField(name = "result_code")
         private String resultCode;
 

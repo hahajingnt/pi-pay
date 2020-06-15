@@ -101,7 +101,7 @@ public class MircoPayEntity extends PiPayEntity {
 //        paramObject.put("store_id",getStoreId());
 
         if (getGoodsDetail() != null){
-            paramObject.put("goods_detail",getGoodsDetail().toJSONString());
+            paramObject.put("goods_detail",getGoodsDetail());
         }
 
         JSONObject jsonObject = new JSONObject();
