@@ -41,6 +41,12 @@ public class RefundResponseEntity extends PiPayResponseEntity {
         @JSONField(name = "refund_amount")
         private String refundAmount;
 
+        /**
+         * 有些支付不需要退款查询，直接可以拿这个判断
+         */
+        @JSONField(name = "refund_status")
+        private String refundStatus;
+
         @JSONField(name = "err_code")
         private String errCode;
 

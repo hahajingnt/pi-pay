@@ -45,6 +45,8 @@ public class MircoPayEntity extends PiPayEntity {
 
     private String operatorId;
 
+    private JSONObject extendParams;
+
 //    private Double totalFee;
 //
 //    private String payWay;
@@ -76,6 +78,9 @@ public class MircoPayEntity extends PiPayEntity {
         if (getGoodsDetail() != null){
             map.put("goods_detail",getGoodsDetail().toJSONString());
         }
+        if (getExtendParams() != null){
+            map.put("extend_params",extendParams.toJSONString());
+        }
 
         return map;
     }
@@ -99,9 +104,11 @@ public class MircoPayEntity extends PiPayEntity {
 //        paramObject.put("pay_way",getPayWay());
 //        paramObject.put("subject",getSubject());
 //        paramObject.put("store_id",getStoreId());
-
         if (getGoodsDetail() != null){
             paramObject.put("goods_detail",getGoodsDetail());
+        }
+        if (getExtendParams() != null){
+            paramObject.put("extend_params",getExtendParams());
         }
 
         JSONObject jsonObject = new JSONObject();

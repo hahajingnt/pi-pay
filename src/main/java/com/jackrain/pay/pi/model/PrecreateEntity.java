@@ -37,6 +37,8 @@ public class PrecreateEntity extends PiPayEntity {
 
     private JSONArray goodsDetail;
 
+    private JSONObject extendParams;
+
     public Map<String,String> toMap(){
         Map<String,String> map = new HashMap<>();
         map.put("precreatetype",getPrecreateType());
@@ -49,6 +51,9 @@ public class PrecreateEntity extends PiPayEntity {
         map.put("pay_channel",getPayChannel());
         if (getGoodsDetail() != null){
             map.put("goods_detail",getGoodsDetail().toJSONString());
+        }
+        if (getExtendParams() != null){
+            map.put("extend_params",extendParams.toJSONString());
         }
 
         return map;
@@ -66,7 +71,10 @@ public class PrecreateEntity extends PiPayEntity {
         paramObject.put("goods_tag",getGoodsTag());
         paramObject.put("pay_channel",getPayChannel());
         if (getGoodsDetail() != null){
-            paramObject.put("goods_detail",getGoodsDetail().toJSONString());
+            paramObject.put("goods_detail",getGoodsDetail());
+        }
+        if (getExtendParams() != null){
+            paramObject.put("extend_params",getExtendParams());
         }
 
         JSONObject jsonObject = new JSONObject();
