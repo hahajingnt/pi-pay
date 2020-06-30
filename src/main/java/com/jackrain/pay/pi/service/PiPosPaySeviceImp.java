@@ -45,9 +45,13 @@ public class PiPosPaySeviceImp implements PiPosPayApi {
         posPreOrderEntity.setSignWithMap(posPreOrderEntity.toMap());
         JSONObject bodyObject = posPreOrderEntity.toJSONObject();
         log.debug("bodyObject:" + bodyObject.toJSONString());
+
         PosPreOrderResponseEntity ret = post(PosPayMethod.METHOD_PREORDER,bodyObject,PosPreOrderResponseEntity.class);
         log.debug("ret:" + ret.toJSONString());
         return ret;
+
+//        return new PosPreOrderResponseEntity();
+
     }
 
     @Override

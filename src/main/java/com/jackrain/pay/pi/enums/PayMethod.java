@@ -34,7 +34,12 @@ public enum PayMethod {
     /**
      *
      */
-    METHOD_REVERSE("reverse");
+    METHOD_REVERSE("reverse"),
+
+    /**
+     *
+     */
+    METHOD_CLOSE("closePrecreate");
 
     private String value;
 

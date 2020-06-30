@@ -68,6 +68,13 @@ public interface PiPayApi {
     ReverseResponseEntity reverse(ReverseEntity reverseEntity);
 
     /**
+     *
+     * @param closeEntity
+     * @return
+     */
+    CloseResponseEntity closePay( CloseEntity closeEntity);
+
+    /**
      * 下载账单
      */
     JSONObject downloadAlipayBill(JSONObject param);

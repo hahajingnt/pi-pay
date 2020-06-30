@@ -49,6 +49,7 @@ public class PiPaySeviceImp implements PiPayApi {
         MircoPayResponseEntity ret = post(PayMethod.METHOD_MICROPAY,bodyObject,MircoPayResponseEntity.class);
         log.debug("ret:" + ret.toJSONString());
         return ret;
+//        return null;
     }
 
     @Override
@@ -107,6 +108,17 @@ public class PiPaySeviceImp implements PiPayApi {
         JSONObject bodyObject = reverseEntity.toJSONObject();
         log.debug("bodyObject:" + bodyObject.toJSONString());
         ReverseResponseEntity ret = post(PayMethod.METHOD_REVERSE,bodyObject, ReverseResponseEntity.class);
+        log.debug("ret:" + ret.toJSONString());
+        return ret;
+    }
+
+    @Override
+    public CloseResponseEntity closePay(CloseEntity closeEntity) {
+        //构建body
+        closeEntity.setSignWithMap(closeEntity.toMap());
+        JSONObject bodyObject = closeEntity.toJSONObject();
+        log.debug("bodyObject:" + bodyObject.toJSONString());
+        CloseResponseEntity ret = post(PayMethod.METHOD_CLOSE,bodyObject, CloseResponseEntity.class);
         log.debug("ret:" + ret.toJSONString());
         return ret;
     }
