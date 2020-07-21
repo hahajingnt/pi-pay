@@ -124,6 +124,17 @@ public class PiPaySeviceImp implements PiPayApi {
     }
 
     @Override
+    public DownloadBillResponseEntity downloadBill(DownloadBillEntity downloadBillEntity) {
+        //构建body
+        downloadBillEntity.setSignWithMap(downloadBillEntity.toMap());
+        JSONObject bodyObject = downloadBillEntity.toJSONObject();
+        log.debug("bodyObject:" + bodyObject.toJSONString());
+        DownloadBillResponseEntity ret = post(PayMethod.METHOD_DOWNLOAD_BILL,bodyObject, DownloadBillResponseEntity.class);
+        log.debug("ret:" + ret.toJSONString());
+        return ret;
+    }
+
+    @Override
     public JSONObject downloadAlipayBill(JSONObject param) {
 
         String paramStr = PiPayEntity.getSignString(param,param.getString("developerKey"));
@@ -140,6 +151,33 @@ public class PiPaySeviceImp implements PiPayApi {
         return res;
     }
 
+    @Override
+    public JSONObject qrcodeUrl(PrecreateEntity precreateEntity) {
+
+        //构建body
+        precreateEntity.setSignWithMap(precreateEntity.toMap());
+        JSONObject paramObject = precreateEntity.toJSONObject();
+        log.debug("paramObject:" + paramObject.toJSONString());
+
+        PayRestTemplate payRestTemplate = PayRestTemplateConf.getInstance();
+        MultiValueMap<String, String> headers = new LinkedMultiValueMap<String, String>();
+        headers.add("Content-Type","application/x-www-form-urlencoded;charset=UTF-8");
+
+        String body = "";
+        try {
+            JSONObject bodyObject = new JSONObject();
+            bodyObject.put("json", paramObject.toJSONString());
+            body = URLEncoder.encode(bodyObject.toJSONString(),"UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+        HttpEntity<String> request = new HttpEntity(body,headers);
+        JSONObject res = payRestTemplate.postForRequestBody(url + "/webpay/qrcode/url",request,JSONObject.class);
+
+        return res;
+    }
+
     private <T> T post(PayMethod payMethod , JSONObject bodyObject,Class<T> tClass){
 
         PayRestTemplate payRestTemplate = PayRestTemplateConf.getInstance();
@@ -150,7 +188,7 @@ public class PiPaySeviceImp implements PiPayApi {
             String body = URLEncoder.encode(bodyObject.toJSONString(),"UTF-8");
             HttpEntity<String> request = new HttpEntity(body,headers);
             log.debug(url + " body:" + body);
-            T ret = payRestTemplate.postForRequestBody(url + payMethod.getValue(),request,tClass);
+            T ret = payRestTemplate.postForRequestBody(url + "/pay/" + payMethod.getValue(),request,tClass);
             return ret;
         } catch (Exception e) {
             e.printStackTrace();

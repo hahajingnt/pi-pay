@@ -77,6 +77,18 @@ public interface PiPayApi {
     /**
      * 下载账单
      */
+    DownloadBillResponseEntity downloadBill(DownloadBillEntity downloadBillEntity);
+
+    /**
+     * 下载账单
+     */
     JSONObject downloadAlipayBill(JSONObject param);
+
+    /**
+     * 获取二维码地址
+     * @param precreateEntity
+     * @return
+     */
+    JSONObject qrcodeUrl(PrecreateEntity precreateEntity);
 
 }

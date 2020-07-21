@@ -46,11 +46,11 @@ public class PosBaseTest {
         log.info(timestamp.toString());
         mircoPayEntity.setTimestamp(timestamp.toString());
         mircoPayEntity.setSubject("测试店");
-        mircoPayEntity.setOutTradeNo("1000180000031");
+        mircoPayEntity.setOutTradeNo("1000180000034");
         mircoPayEntity.setTotalAmount(10);
         mircoPayEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
-        mircoPayEntity.setStoreCode("JNBY");
-        mircoPayEntity.setPayChannel("CHINAUMS_POST");
+        mircoPayEntity.setStoreCode("001");
+        mircoPayEntity.setPayChannel("BOCOMPAY");
 //        mircoPayEntity.setDeviceInfo("webPos");
 //        mircoPayEntity.setVipNo("-1");
 //        mircoPayEntity.setPayment("1");

@@ -39,7 +39,12 @@ public enum PayMethod {
     /**
      *
      */
-    METHOD_CLOSE("closePrecreate");
+    METHOD_CLOSE("closePrecreate"),
+
+    /**
+     *
+     */
+    METHOD_DOWNLOAD_BILL("downloadbill");
 
     private String value;
 

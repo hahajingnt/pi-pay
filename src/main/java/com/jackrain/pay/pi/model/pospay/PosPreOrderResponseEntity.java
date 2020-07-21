@@ -75,6 +75,12 @@ public class PosPreOrderResponseEntity extends PiPayResponseEntity {
          */
         @JSONField(name = "err_msg")
         private String errMsg;
+
+        /**
+         * 订单信息，返回给对接方，有些机具需要订单信息
+         */
+        @JSONField(name = "order_info")
+        private String orderInfo;
     }
 
    @Override

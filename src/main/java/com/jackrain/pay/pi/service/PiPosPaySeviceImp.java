@@ -125,7 +125,7 @@ public class PiPosPaySeviceImp implements PiPosPayApi {
             String body = URLEncoder.encode(bodyObject.toJSONString(),"UTF-8");
             HttpEntity<String> request = new HttpEntity(body,headers);
             log.debug(url + " body:" + body);
-            T ret = payRestTemplate.postForRequestBody(url + payMethod.getValue(),request,tClass);
+            T ret = payRestTemplate.postForRequestBody(url + "/pay/" + payMethod.getValue(),request,tClass);
             return ret;
         } catch (Exception e) {
             e.printStackTrace();

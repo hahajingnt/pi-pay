@@ -2,6 +2,7 @@ package com.jackrain.pay.pi.model;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.annotation.JSONField;
 import lombok.Data;
 
 import java.util.HashMap;
@@ -39,16 +40,22 @@ public class PrecreateEntity extends PiPayEntity {
 
     private JSONObject extendParams;
 
+    /**
+     * Y/N 是否静态二维码
+     */
+    private String staticQrcode;
+
     public Map<String,String> toMap(){
         Map<String,String> map = new HashMap<>();
         map.put("precreatetype",getPrecreateType());
         map.put("body",getBody());
         map.put("out_trade_no",getOutTradeNo());
-        map.put("total_amount",getTotalAmount().toString());
+        map.put("total_amount",getTotalAmount() == null?null:getTotalAmount().toString());
         map.put("customer_id",getCustomerId());
         map.put("store_code",getStoreCode());
         map.put("goods_tag",getGoodsTag());
         map.put("pay_channel",getPayChannel());
+        map.put("static_qrcode",getStaticQrcode());
         if (getGoodsDetail() != null){
             map.put("goods_detail",getGoodsDetail().toJSONString());
         }
@@ -70,6 +77,7 @@ public class PrecreateEntity extends PiPayEntity {
         paramObject.put("store_code",getStoreCode());
         paramObject.put("goods_tag",getGoodsTag());
         paramObject.put("pay_channel",getPayChannel());
+        paramObject.put("static_qrcode",getStaticQrcode());
         if (getGoodsDetail() != null){
             paramObject.put("goods_detail",getGoodsDetail());
         }

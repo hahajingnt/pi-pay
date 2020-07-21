@@ -47,11 +47,12 @@ public class PiPayEntity {
         if (StringUtils.isEmpty(getDeveloperKey())){
             throw new PayRunTimeException("developerKey不能为空");
         }
-        if (StringUtils.isEmpty(getTimestamp())){
-            throw new PayRunTimeException("timestamp不能为空");
-        }
+//        if (StringUtils.isEmpty(getTimestamp())){
+//            throw new PayRunTimeException("timestamp不能为空");
+//        }
         //第一步，拼接 developer_id、developer_key、time_stamp 组 成 [developer_id]+[developer_key]+[time_stamp]字符串，经过md5运算得到字符串subSign1
-        String des = getDeveloperId()+ getDeveloperKey() + getTimestamp();
+        String timestamp = getTimestamp() == null?"":getTimestamp();
+        String des = getDeveloperId()+ getDeveloperKey() + timestamp;
         log.info("des:" + des);
         String subSign1 = MD5Utils.MD5Encode(des,"utf-8");
         log.info("subSign1:" + subSign1);
