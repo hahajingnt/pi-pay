@@ -32,6 +32,9 @@ public class MircoPayResponseEntity extends PiPayResponseEntity {
         @JSONField(name = "out_trade_no")
         private String outTradeNo;
 
+        @JSONField(name = "platform_no")
+        private String platformNo;
+
         @JSONField(name = "trade_no")
         private String tradeNo;
 

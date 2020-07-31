@@ -3,6 +3,7 @@ package com.jackrain.pay.pi.model;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.annotation.JSONField;
 import com.jackrain.pay.exception.PayRunTimeException;
 import com.jackrain.pay.utils.AlipayUtils;
 import com.jackrain.pay.utils.MD5Utils;
@@ -26,6 +27,8 @@ import java.util.Map;
 @Data
 @Slf4j
 public class PiPayEntity {
+
+    private String payWay;
 
     private String developerId;
 

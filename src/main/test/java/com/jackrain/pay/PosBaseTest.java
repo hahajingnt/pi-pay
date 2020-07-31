@@ -46,7 +46,7 @@ public class PosBaseTest {
         log.info(timestamp.toString());
         mircoPayEntity.setTimestamp(timestamp.toString());
         mircoPayEntity.setSubject("测试店");
-        mircoPayEntity.setOutTradeNo("1000180000034");
+        mircoPayEntity.setOutTradeNo("1000180000036");
         mircoPayEntity.setTotalAmount(10);
         mircoPayEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
         mircoPayEntity.setStoreCode("001");
@@ -123,7 +123,7 @@ public class PosBaseTest {
 //        refundEntity.setDeveloperKey("438d66903cf002573c3c0d02f4daa0a9");
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         refundEntity.setTimestamp(timestamp.toString());
-        refundEntity.setOutTradeNo("1000070000093");
+        refundEntity.setOutTradeNo("1000180000031");
 //        refundEntity.setTradeNo("20200403144757000031022321");
         refundEntity.setOutRefundNo("1000300200063");
         refundEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");

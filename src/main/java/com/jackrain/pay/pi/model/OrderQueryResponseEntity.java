@@ -38,6 +38,9 @@ public class OrderQueryResponseEntity extends PiPayResponseEntity {
         @JSONField(name = "trade_no")
         private String tradeNo;
 
+        @JSONField(name = "platform_no")
+        private String platformNo;
+
         @JSONField(name = "trade_state")
         private String tradeState;
 

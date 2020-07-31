@@ -1,6 +1,7 @@
 package com.jackrain.pay.pi.model.pospay;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.jackrain.pay.pi.model.PiPayResponseEntity;
 import lombok.Data;
@@ -80,7 +81,7 @@ public class PosPreOrderResponseEntity extends PiPayResponseEntity {
          * 订单信息，返回给对接方，有些机具需要订单信息
          */
         @JSONField(name = "order_info")
-        private String orderInfo;
+        private JSONObject orderInfo;
     }
 
    @Override
