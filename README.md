@@ -13,7 +13,8 @@
 
 #### 配置文件
     //测试支付网关
-    r3.pipay.url=https://test.pay2.piplus.cn/pay/
+    r3.pipay.url=https://test.pay2.piplus.cn
+    r3.pipay.downbill.url=
 
 
 #### 代码实例
