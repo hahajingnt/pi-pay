@@ -40,10 +40,19 @@ public class PrecreateEntity extends PiPayEntity {
 
     private JSONObject extendParams;
 
+    private String tradeType;
+
     /**
      * Y/N 是否静态二维码
      */
     private String staticQrcode;
+
+    /**
+     * 分账标识
+     */
+    private String profitSharing;
+
+    private String openId;
 
     public Map<String,String> toMap(){
         Map<String,String> map = new HashMap<>();
@@ -56,6 +65,9 @@ public class PrecreateEntity extends PiPayEntity {
         map.put("goods_tag",getGoodsTag());
         map.put("pay_channel",getPayChannel());
         map.put("static_qrcode",getStaticQrcode());
+        map.put("trade_type",getTradeType());
+        map.put("profit_sharing",getProfitSharing());
+        map.put("open_id",getOpenId());
         if (getGoodsDetail() != null){
             map.put("goods_detail",getGoodsDetail().toJSONString());
         }
@@ -78,6 +90,9 @@ public class PrecreateEntity extends PiPayEntity {
         paramObject.put("goods_tag",getGoodsTag());
         paramObject.put("pay_channel",getPayChannel());
         paramObject.put("static_qrcode",getStaticQrcode());
+        paramObject.put("trade_type",getTradeType());
+        paramObject.put("profit_sharing",getProfitSharing());
+        paramObject.put("open_id",getOpenId());
         if (getGoodsDetail() != null){
             paramObject.put("goods_detail",getGoodsDetail());
         }
