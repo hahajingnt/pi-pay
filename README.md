@@ -8,7 +8,7 @@
     <dependency>
        <groupId>org.syman</groupId>
        <artifactId>raincloud-pay</artifactId>
-       <version>1.4.0</version>
+       <version>1.4.2</version>
     </dependency>
 
 #### 配置文件
