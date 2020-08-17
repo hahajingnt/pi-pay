@@ -41,6 +41,40 @@ public class PrecreateResponseEntity extends PiPayResponseEntity {
         @JSONField(name = "err_msg")
         private String errMsg;
 
+        @JSONField(name = "prepay_id")
+        private String prepayId;
+
+        /**
+         * 公众号id
+         */
+        @JSONField(name = "app_id")
+        private String appId;
+        /**
+         * 时间戳
+         */
+        @JSONField(name = "time_stamp")
+        private String timeStamp;
+        /**
+         * 随机字符串
+         */
+        @JSONField(name = "nonce_str")
+        private String nonceStr;
+        /**
+         * 订单详情扩展字符串
+         */
+        @JSONField(name = "wx_package")
+        private String wxPackage;
+        /**
+         * 签名方式
+         */
+        @JSONField(name = "sign_type")
+        private String signType;
+        /**
+         * 签名
+         */
+        @JSONField(name = "pay_sign")
+        private String paySign;
+
 
     }
 
