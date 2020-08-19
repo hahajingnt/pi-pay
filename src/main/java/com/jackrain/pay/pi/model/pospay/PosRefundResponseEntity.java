@@ -1,6 +1,7 @@
 package com.jackrain.pay.pi.model.pospay;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.jackrain.pay.pi.model.PiPayResponseEntity;
 import lombok.Data;
@@ -72,6 +73,9 @@ public class PosRefundResponseEntity extends PiPayResponseEntity {
          */
         @JSONField(name = "err_msg")
         private String errMsg;
+
+        @JSONField(name = "refund_info")
+        private String refundInfo;
 
     }
 

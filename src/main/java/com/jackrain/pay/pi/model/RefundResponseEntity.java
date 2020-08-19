@@ -52,8 +52,6 @@ public class RefundResponseEntity extends PiPayResponseEntity {
 
         @JSONField(name = "err_msg")
         private String errMsg;
-
-
     }
 
    @Override
