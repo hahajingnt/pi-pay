@@ -54,6 +54,8 @@ public class PrecreateEntity extends PiPayEntity {
 
     private String openId;
 
+    private String subOpenId;
+
     private String attach;
 
     public Map<String,String> toMap(){
@@ -71,6 +73,7 @@ public class PrecreateEntity extends PiPayEntity {
         map.put("profit_sharing",getProfitSharing());
         map.put("open_id",getOpenId());
         map.put("attach",getAttach());
+        map.put("sub_open_id",getSubOpenId());
         if (getGoodsDetail() != null){
             map.put("goods_detail",getGoodsDetail().toJSONString());
         }
@@ -97,6 +100,7 @@ public class PrecreateEntity extends PiPayEntity {
         paramObject.put("profit_sharing",getProfitSharing());
         paramObject.put("open_id",getOpenId());
         paramObject.put("attach",getAttach());
+        paramObject.put("sub_open_id",getSubOpenId());
         if (getGoodsDetail() != null){
             paramObject.put("goods_detail",getGoodsDetail());
         }
