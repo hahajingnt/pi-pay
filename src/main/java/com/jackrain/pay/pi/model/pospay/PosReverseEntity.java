@@ -49,6 +49,8 @@ public class PosReverseEntity extends PiPayEntity {
      */
     private String tradeNo;
 
+    private String outReverseNo;
+
     /**
      * 反射参数
      */
@@ -64,7 +66,7 @@ public class PosReverseEntity extends PiPayEntity {
         map.put("pay_channel",getPayChannel());
         map.put("reflect",getReflect());
         map.put("cash_register_no",getCashRegisterNo());
-
+        map.put("out_reverse_no",getOutReverseNo());
         return map;
     }
 
@@ -79,6 +81,7 @@ public class PosReverseEntity extends PiPayEntity {
         paramObject.put("pay_channel",getPayChannel());
         paramObject.put("reflect",getReflect());
         paramObject.put("cash_register_no",getCashRegisterNo());
+        paramObject.put("out_reverse_no",getOutReverseNo());
 
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("developer_id",getDeveloperId());
