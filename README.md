@@ -82,7 +82,7 @@
         precreateEntity.setTotalAmount(1);
         precreateEntity.setCustomerId("3A47E6D7573A05840E3613FB39E0DA84");
         precreateEntity.setStoreCode("001");
-        payApi.precreate(mircoPayEntity);
+        payApi.precreate(precreateEntity);
 
     }
 
