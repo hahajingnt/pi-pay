@@ -95,7 +95,7 @@ public class PiPayEntity {
     public static JSONObject sortedJSONObejct(JSONObject param){
         Hashtable hashtable = new Hashtable();
         param.keySet().forEach(p -> {
-            String paramValue = param.getOrDefault(p, "").toString();
+            String paramValue = param.getString(p);
             if (!StringUtils.isEmpty(paramValue)) {
                 hashtable.put(p, paramValue);
             }
@@ -116,8 +116,8 @@ public class PiPayEntity {
     public static String getSignString(JSONObject params,String developerKey){
         Hashtable hashtable = new Hashtable();
         params.keySet().forEach(p -> {
-            String paramValue = params.getOrDefault(p, "").toString();
-            if (!StringUtils.isEmpty(paramValue) && !"sign".equalsIgnoreCase(p.toString())) {
+            String paramValue = params.getString(p);
+            if (!StringUtils.isEmpty(paramValue) && !"sign".equalsIgnoreCase(p)) {
                 hashtable.put(p, paramValue);
             }
         });
