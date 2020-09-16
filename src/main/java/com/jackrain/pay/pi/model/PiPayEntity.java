@@ -64,12 +64,18 @@ public class PiPayEntity {
         params = AlipayUtils.paraFilter(params);
         //有明细也得排序
         if(params.get("goods_detail") != null){
-            JSONArray jsonArray= JSON.parseArray(params.get("goods_detail"));
-            for(int i=0;i<jsonArray.size();i++){
-                JSONObject jsonObject=sortedJSONObejct(jsonArray.getJSONObject(i));
-                jsonArray.set(i,jsonObject);
+            JSONArray goodsDetail= JSON.parseArray(params.get("goods_detail"));
+            for(int i=0;i<goodsDetail.size();i++){
+                JSONObject goodSorted=sortedJSONObejct(goodsDetail.getJSONObject(i));
+                goodsDetail.set(i,goodSorted);
             }
-            params.put("goods_detail",jsonArray.toJSONString());
+            params.put("goods_detail",goodsDetail.toJSONString());
+        }
+        //extend_params排序
+        if (params.get("extend_params") != null) {
+            JSONObject extendParams = JSON.parseObject(params.get("extend_params"));
+            JSONObject extendParamsSorted = sortedJSONObejct(extendParams);
+            params.put("extend_params", extendParamsSorted.toJSONString());
         }
 
         //拼接字符串
