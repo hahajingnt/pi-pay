@@ -58,6 +58,11 @@ public class PrecreateEntity extends PiPayEntity {
 
     private String attach;
 
+    /**
+     * 该笔订单超时时间，逾期将关闭交易。单位为分钟，5代表5分钟
+     */
+    private Integer timeoutExpress;
+
     public Map<String,String> toMap(){
         Map<String,String> map = new HashMap<>();
         map.put("precreatetype",getPrecreateType());
@@ -74,6 +79,7 @@ public class PrecreateEntity extends PiPayEntity {
         map.put("open_id",getOpenId());
         map.put("attach",getAttach());
         map.put("sub_open_id",getSubOpenId());
+        map.put("timeout_express",getTimeoutExpress() == null?null:getTimeoutExpress().toString());
         if (getGoodsDetail() != null){
             map.put("goods_detail",getGoodsDetail().toJSONString());
         }
@@ -101,6 +107,7 @@ public class PrecreateEntity extends PiPayEntity {
         paramObject.put("open_id",getOpenId());
         paramObject.put("attach",getAttach());
         paramObject.put("sub_open_id",getSubOpenId());
+        paramObject.put("timeout_express",getTimeoutExpress() == null?null:getTimeoutExpress().toString());
         if (getGoodsDetail() != null){
             paramObject.put("goods_detail",getGoodsDetail());
         }
