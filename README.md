@@ -5,11 +5,6 @@
 
 #### 集成引包
 
-    <dependency>
-       <groupId>org.syman</groupId>
-       <artifactId>raincloud-pay</artifactId>
-       <version>1.4.2</version>
-    </dependency>
 
 #### 配置文件
     //测试支付网关
@@ -76,18 +71,18 @@
     //二维码支付
     public void precreate(){
 
-        PrecreateEntity mircoPayEntity = new PrecreateEntity();
-        mircoPayEntity.setDeveloperId("001");
+        PrecreateEntity precreateEntity = new PrecreateEntity();
+        precreateEntity.setDeveloperId("001");
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         log.info(timestamp.toString());
-        mircoPayEntity.setTimestamp(timestamp.toString());
-        mircoPayEntity.setPrecreateType(PrecreateType.ALIPAY.getValue());
-        mircoPayEntity.setBody("苹果");
-        mircoPayEntity.setOutTradeNo("000000000003");
-        mircoPayEntity.setTotalAmount(1);
-        mircoPayEntity.setCustomerId("3A47E6D7573A05840E3613FB39E0DA84");
-        mircoPayEntity.setStoreCode("001");
-        payApi.precreate(mircoPayEntity);
+        precreateEntity.setTimestamp(timestamp.toString());
+        precreateEntity.setPrecreateType(PrecreateType.ALIPAY.getValue());
+        precreateEntity.setBody("苹果");
+        precreateEntity.setOutTradeNo("000000000003");
+        precreateEntity.setTotalAmount(1);
+        precreateEntity.setCustomerId("3A47E6D7573A05840E3613FB39E0DA84");
+        precreateEntity.setStoreCode("001");
+        payApi.precreate(precreateEntity);
 
     }
 
