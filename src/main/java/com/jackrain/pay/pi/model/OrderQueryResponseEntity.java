@@ -56,6 +56,9 @@ public class OrderQueryResponseEntity extends PiPayResponseEntity {
         @JSONField(name = "buyer_pay_amount")
         private String buyerPayAmount;
 
+        @JSONField(name = "transaction_no")
+        private String transactionNo;
+
         @JSONField(name = "discount_amount")
         private String discountAmount;
 

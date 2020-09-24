@@ -59,6 +59,9 @@ public class MircoPayResponseEntity extends PiPayResponseEntity {
         @JSONField(name = "err_msg")
         private String errMsg;
 
+        @JSONField(name = "transaction_no")
+        private String transactionNo;
+
     }
 
    @Override
