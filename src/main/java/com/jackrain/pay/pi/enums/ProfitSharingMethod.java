@@ -26,7 +26,10 @@ public enum ProfitSharingMethod {
     /**
      *
      */
-    METHOD_PROFITSHARING_QUERY("profitsharing_query");
+    METHOD_PROFITSHARING_QUERY("profitsharing_query"),
+
+
+    METHOD_PROFITSHARING_FINISH("profitsharing_finish");
 
     private String value;
 

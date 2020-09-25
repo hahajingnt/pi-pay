@@ -12,8 +12,15 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.RestTemplate;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.*;
 import java.sql.Timestamp;
 import java.util.*;
 
@@ -25,7 +32,7 @@ import java.util.*;
  * @Modify:
  **/
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes=PayApplication.class)
+@SpringBootTest(classes = PayApplication.class)
 @Slf4j
 public class PosBaseTest {
 
@@ -34,7 +41,7 @@ public class PosBaseTest {
     PiPosPayApi piPosPayApi;
 
     @Test
-    public void preOrder(){
+    public void preOrder() {
 
         PosPreOrderEntity mircoPayEntity = new PosPreOrderEntity();
 //        mircoPayEntity.setDeveloperId("82");
@@ -46,11 +53,11 @@ public class PosBaseTest {
         log.info(timestamp.toString());
         mircoPayEntity.setTimestamp(timestamp.toString());
         mircoPayEntity.setSubject("测试店");
-        mircoPayEntity.setOutTradeNo("1000180000036");
-        mircoPayEntity.setTotalAmount(10);
+        mircoPayEntity.setOutTradeNo(String.valueOf(System.currentTimeMillis()));
+        mircoPayEntity.setTotalAmount(1);
         mircoPayEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
-        mircoPayEntity.setStoreCode("001");
-        mircoPayEntity.setPayChannel("BOCOMPAY");
+        mircoPayEntity.setStoreCode("JNBY");
+        mircoPayEntity.setPayChannel("shouqianba");
 //        mircoPayEntity.setDeviceInfo("webPos");
 //        mircoPayEntity.setVipNo("-1");
 //        mircoPayEntity.setPayment("1");
@@ -77,22 +84,22 @@ public class PosBaseTest {
 //        good3.put("price","0.2");
 //        goods.add(good3);
 
-        List<PosGoodsDetailEntity> goodsDetail = new LinkedList<>();
-        PosGoodsDetailEntity posGoodsDetailEntity = new PosGoodsDetailEntity();
-        posGoodsDetailEntity.setGoodsId("PJXYA0006");
-        posGoodsDetailEntity.setGoodsName("塑料袋（250*450+70）");
-        posGoodsDetailEntity.setPrice("5");
-        posGoodsDetailEntity.setQuantity("1");
-        goodsDetail.add(posGoodsDetailEntity);
-        mircoPayEntity.setGoodsDetail(goodsDetail);
+//        List<PosGoodsDetailEntity> goodsDetail = new LinkedList<>();
+//        PosGoodsDetailEntity posGoodsDetailEntity = new PosGoodsDetailEntity();
+//        posGoodsDetailEntity.setGoodsId("PJXYA0006");
+//        posGoodsDetailEntity.setGoodsName("塑料袋（250*450+70）");
+//        posGoodsDetailEntity.setPrice("5");
+//        posGoodsDetailEntity.setQuantity("1");
+//        goodsDetail.add(posGoodsDetailEntity);
+//        mircoPayEntity.setGoodsDetail(goodsDetail);
 
-       PosPreOrderResponseEntity piPayResponseEntity = piPosPayApi.preorder(mircoPayEntity);
+        PosPreOrderResponseEntity piPayResponseEntity = piPosPayApi.preorder(mircoPayEntity);
         System.out.println(piPayResponseEntity.toJSONString());
 
     }
 
     @Test
-    public void orderquery(){
+    public void orderquery() {
 
         PosOrderQueryEntity orderQueryEntity = new PosOrderQueryEntity();
 //        orderQueryEntity.setDeveloperId("82");
@@ -104,17 +111,17 @@ public class PosBaseTest {
         log.info(timestamp.toString());
         orderQueryEntity.setTimestamp(timestamp.toString());
 //        orderQueryEntity.setTradeNo("2019112722001412545718971268");
-        orderQueryEntity.setOutTradeNo("1000180000031");
+        orderQueryEntity.setOutTradeNo("1600680927905");
         orderQueryEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
-        orderQueryEntity.setStoreCode("001");
-        orderQueryEntity.setPayChannel("CHINAUMS_POST");
+        orderQueryEntity.setStoreCode("JNBY");
+        orderQueryEntity.setPayChannel("shouqianba");
 //        orderQueryEntity.setPayChannel("CHINAUMS_ydPAY");
         piPosPayApi.orderquery(orderQueryEntity);
 
     }
 
     @Test
-    public void refund(){
+    public void refund() {
 
         PosRefundEntity refundEntity = new PosRefundEntity();
 //        refundEntity.setDeveloperId("82");
@@ -123,20 +130,20 @@ public class PosBaseTest {
 //        refundEntity.setDeveloperKey("438d66903cf002573c3c0d02f4daa0a9");
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         refundEntity.setTimestamp(timestamp.toString());
-        refundEntity.setOutTradeNo("1000180000031");
+        refundEntity.setOutTradeNo("1597805739512");
 //        refundEntity.setTradeNo("20200403144757000031022321");
-        refundEntity.setOutRefundNo("1000300200063");
+        refundEntity.setOutRefundNo("24573985743553455345");
         refundEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
         refundEntity.setStoreCode("JNBY");
-        refundEntity.setRefundAmount(5);
-        refundEntity.setPayChannel("shouQianba");
+        refundEntity.setRefundAmount(29);
+        refundEntity.setPayChannel("shande_hmpay");
 //        refundEntity.setPayChannel("CHINAUMS_ydPAY");
         piPosPayApi.refund(refundEntity);
 
     }
 
     @Test
-    public void refundquery(){
+    public void refundquery() {
 
         PosRefundQueryEntity refundQueryEntity = new PosRefundQueryEntity();
 //        refundQueryEntity.setDeveloperId("001");
@@ -160,7 +167,7 @@ public class PosBaseTest {
 
 
     @Test
-    public void reverse(){
+    public void reverse() {
 
         PosReverseEntity reverseEntity = new PosReverseEntity();
         reverseEntity.setDeveloperId("001");
@@ -168,14 +175,53 @@ public class PosBaseTest {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         log.info(timestamp.toString());
         reverseEntity.setTimestamp(timestamp.toString());
-//        reverseEntity.setOutTradeNo("1000000000060");
-        reverseEntity.setTradeNo("200514999888000017");
+        reverseEntity.setOutTradeNo("1597805722531");
+        reverseEntity.setOutReverseNo("234234534534534");
+//        reverseEntity.setTradeNo("200514999888000017");
 //        reverseEntity.setCustomerId("1905EDBC05E099876D0B044D40A9FD66");
         reverseEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
         reverseEntity.setStoreCode("JNBY");
-        reverseEntity.setPayChannel("shouQianba");
+        reverseEntity.setPayChannel("shande_hmpay");
         piPosPayApi.reverse(reverseEntity);
 
     }
+
+
+    public static String getImgeHexStringByLocalUrl(String imageUrl) {
+        String res = null;
+
+        try {
+            File imageFile = new File(imageUrl);
+            System.out.println(imageFile);
+            InputStream inStream = new FileInputStream(imageFile);
+            BufferedInputStream bis = new BufferedInputStream(inStream);
+            BufferedImage bm = ImageIO.read(bis);
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            String type = imageUrl.substring(imageUrl.length() - 3);
+            ImageIO.write(bm, type, bos);
+            bos.flush();
+            byte[] data = bos.toByteArray();
+            System.out.println(data);
+            res = byte2hex(data);
+            bos.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return res;
+    }
+
+    public static String byte2hex(byte[] b) {
+        char[] Digit = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
+        char[] out = new char[b.length * 2];
+        for (int i = 0; i < b.length; i++) {
+            byte c = b[i];
+            out[i * 2] = Digit[(c >>> 4) & 0X0F];
+            out[i * 2 + 1] = Digit[c & 0X0F];
+        }
+
+        return new String(out);
+    }
+
+
 
 }
