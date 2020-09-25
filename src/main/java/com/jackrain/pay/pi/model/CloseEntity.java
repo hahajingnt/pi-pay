@@ -18,7 +18,6 @@ import java.util.Map;
 @Data
 public class CloseEntity extends PiPayEntity {
 
-
     private String tradeNo;
 
     private String outTradeNo;
