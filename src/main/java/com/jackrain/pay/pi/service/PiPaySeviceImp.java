@@ -46,7 +46,7 @@ public class PiPaySeviceImp implements PiPayApi {
         mircoPayEntity.setSignWithMap(mircoPayEntity.toMap());
         JSONObject bodyObject = mircoPayEntity.toJSONObject();
         log.debug("bodyObject:" + bodyObject.toJSONString());
-        MircoPayResponseEntity ret = post(PayMethod.METHOD_MICROPAY,bodyObject,MircoPayResponseEntity.class);
+        MircoPayResponseEntity ret = postJson(PayMethod.METHOD_MICROPAY,bodyObject,MircoPayResponseEntity.class);
         log.debug("ret:" + ret.toJSONString());
         return ret;
 //        return null;
@@ -183,11 +183,36 @@ public class PiPaySeviceImp implements PiPayApi {
         PayRestTemplate payRestTemplate = PayRestTemplateConf.getInstance();
         MultiValueMap<String, String> headers = new LinkedMultiValueMap<String, String>();
         headers.add("Content-Type","application/x-www-form-urlencoded;charset=UTF-8");
-//        headers.add("Content-Type","application/json;charset=UTF-8");
         try {
             String body = URLEncoder.encode(bodyObject.toJSONString(),"UTF-8");
             HttpEntity<String> request = new HttpEntity(body,headers);
             log.debug(url + " body:" + body);
+            T ret = payRestTemplate.postForRequestBody(url + "/pay/" + payMethod.getValue(),request,tClass);
+            return ret;
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                PiPayResponseEntity piPayResponseEntity = (PiPayResponseEntity) tClass.newInstance();
+                piPayResponseEntity.setStatusCode("FAIL");
+                piPayResponseEntity.setErrMsg("请求失败");
+                return (T) piPayResponseEntity;
+            } catch (InstantiationException e1) {
+                e1.printStackTrace();
+            } catch (IllegalAccessException e1) {
+                e1.printStackTrace();
+            }
+        }
+
+        return null;
+    }
+
+    private <T> T postJson(PayMethod payMethod , JSONObject bodyObject,Class<T> tClass){
+
+        PayRestTemplate payRestTemplate = PayRestTemplateConf.getInstance();
+        MultiValueMap<String, String> headers = new LinkedMultiValueMap<String, String>();
+        headers.add("Content-Type","application/json;charset=UTF-8");
+        try {
+            HttpEntity<String> request = new HttpEntity(bodyObject,headers);
             T ret = payRestTemplate.postForRequestBody(url + "/pay/" + payMethod.getValue(),request,tClass);
             return ret;
         } catch (Exception e) {

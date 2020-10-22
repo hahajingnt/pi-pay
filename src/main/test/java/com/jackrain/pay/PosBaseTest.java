@@ -36,21 +36,22 @@ public class PosBaseTest {
     @Test
     public void preOrder(){
 
-        PosPreOrderEntity mircoPayEntity = new PosPreOrderEntity();
+        PosPreOrderEntity posPreOrderEntity = new PosPreOrderEntity();
 //        mircoPayEntity.setDeveloperId("82");
 //        mircoPayEntity.setDeveloperId("001");
-//        mircoPayEntity.setDeveloperKey("5e24d575ce275dd34b549ba80337053e");
-        mircoPayEntity.setDeveloperKey("1234567890");
+        posPreOrderEntity.setDeveloperKey("5e24d575ce275dd34b549ba80337053e");
+//        posPreOrderEntity.setDeveloperKey("1234567890");
 //        mircoPayEntity.setDeveloperKey("438d66903cf002573c3c0d02f4daa0a9");
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         log.info(timestamp.toString());
-        mircoPayEntity.setTimestamp(timestamp.toString());
-        mircoPayEntity.setSubject("测试店");
-        mircoPayEntity.setOutTradeNo("1000180000036");
-        mircoPayEntity.setTotalAmount(10);
-        mircoPayEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
-        mircoPayEntity.setStoreCode("001");
-        mircoPayEntity.setPayChannel("BOCOMPAY");
+        posPreOrderEntity.setTimestamp(timestamp.toString());
+        posPreOrderEntity.setSubject("测试店");
+        posPreOrderEntity.setOutTradeNo("1000180000044");
+        posPreOrderEntity.setTotalAmount(10);
+        posPreOrderEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
+        posPreOrderEntity.setStoreCode("001");
+//        mircoPayEntity.setPayChannel("TONGLIANPAY");
+        posPreOrderEntity.setPayChannel("EMPAY");
 //        mircoPayEntity.setDeviceInfo("webPos");
 //        mircoPayEntity.setVipNo("-1");
 //        mircoPayEntity.setPayment("1");
@@ -84,9 +85,9 @@ public class PosBaseTest {
         posGoodsDetailEntity.setPrice("5");
         posGoodsDetailEntity.setQuantity("1");
         goodsDetail.add(posGoodsDetailEntity);
-        mircoPayEntity.setGoodsDetail(goodsDetail);
+        posPreOrderEntity.setGoodsDetail(goodsDetail);
 
-       PosPreOrderResponseEntity piPayResponseEntity = piPosPayApi.preorder(mircoPayEntity);
+       PosPreOrderResponseEntity piPayResponseEntity = piPosPayApi.preorder(posPreOrderEntity);
         System.out.println(piPayResponseEntity.toJSONString());
 
     }
@@ -97,17 +98,18 @@ public class PosBaseTest {
         PosOrderQueryEntity orderQueryEntity = new PosOrderQueryEntity();
 //        orderQueryEntity.setDeveloperId("82");
 //        orderQueryEntity.setDeveloperId("001");
-//        orderQueryEntity.setDeveloperKey("5e24d575ce275dd34b549ba80337053e");
-        orderQueryEntity.setDeveloperKey("1234567890");
+        orderQueryEntity.setDeveloperKey("5e24d575ce275dd34b549ba80337053e");
+//        orderQueryEntity.setDeveloperKey("1234567890");
 //        orderQueryEntity.setDeveloperKey("438d66903cf002573c3c0d02f4daa0a9");
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         log.info(timestamp.toString());
         orderQueryEntity.setTimestamp(timestamp.toString());
 //        orderQueryEntity.setTradeNo("2019112722001412545718971268");
-        orderQueryEntity.setOutTradeNo("1000180000031");
+        orderQueryEntity.setOutTradeNo("1000180000044");
         orderQueryEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
         orderQueryEntity.setStoreCode("001");
-        orderQueryEntity.setPayChannel("CHINAUMS_POST");
+        orderQueryEntity.setPayChannel("EMPAY");
+        orderQueryEntity.setNotifyUrl("");
 //        orderQueryEntity.setPayChannel("CHINAUMS_ydPAY");
         piPosPayApi.orderquery(orderQueryEntity);
 
@@ -123,13 +125,13 @@ public class PosBaseTest {
 //        refundEntity.setDeveloperKey("438d66903cf002573c3c0d02f4daa0a9");
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         refundEntity.setTimestamp(timestamp.toString());
-        refundEntity.setOutTradeNo("1000180000031");
+        refundEntity.setOutTradeNo("1000180000043");
 //        refundEntity.setTradeNo("20200403144757000031022321");
-        refundEntity.setOutRefundNo("1000300200063");
+        refundEntity.setOutRefundNo("1000300200065");
         refundEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
-        refundEntity.setStoreCode("JNBY");
+//        refundEntity.setStoreCode("JNBY");
         refundEntity.setRefundAmount(5);
-        refundEntity.setPayChannel("shouQianba");
+        refundEntity.setPayChannel("BOCOMPAY");
 //        refundEntity.setPayChannel("CHINAUMS_ydPAY");
         piPosPayApi.refund(refundEntity);
 

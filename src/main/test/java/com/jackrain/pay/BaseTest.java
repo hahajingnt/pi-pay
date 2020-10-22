@@ -42,26 +42,26 @@ public class BaseTest {
         MircoPayEntity mircoPayEntity = new MircoPayEntity();
 //        mircoPayEntity.setDeveloperId("82");
 //        mircoPayEntity.setDeveloperId("001");
-//        mircoPayEntity.setDeveloperKey("5e24d575ce275dd34b549ba80337053e");
-//        mircoPayEntity.setDeveloperKey("568d39c06680463cae747c2a85ec8dbd");
-        mircoPayEntity.setDeveloperKey("1234567890");
+        mircoPayEntity.setDeveloperKey("5e24d575ce275dd34b549ba80337053e");
+//        mircoPayEntity.setDeveloperKey("7cce2064feae494e841a4901453c4507");
+//        mircoPayEntity.setDeveloperKey("1234567890");
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         log.info(timestamp.toString());
         mircoPayEntity.setTimestamp(timestamp.toString());
-        mircoPayEntity.setAuthCode("280600977325067742");
+        mircoPayEntity.setAuthCode("284162491887413994");
         mircoPayEntity.setBody("测试店");
-        mircoPayEntity.setOutTradeNo("134505675022966632");
-        mircoPayEntity.setTotalAmount(10);
-//        mircoPayEntity.setCustomerId("35CF73E39AFC68C019DB6B470490D28C");
+        mircoPayEntity.setOutTradeNo("134505675022966646");
+        mircoPayEntity.setTotalAmount(2);
         mircoPayEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
-        mircoPayEntity.setStoreCode("Z0211027");
-//        mircoPayEntity.setPayChannel("ICBCPAY");
+//        mircoPayEntity.setCustomerId("4B2D9DE13536AC3A5B4675D2193B6F41");
+        mircoPayEntity.setStoreCode("001");
+//        mircoPayEntity.setPayChannel("HWCDIRECTPAY");
 //        mircoPayEntity.setDeviceInfo("webPos");
 //        mircoPayEntity.setVipNo("-1");
 //        mircoPayEntity.setPayment("1");
 //        mircoPayEntity.setOperatorId("3429");
 //        mircoPayEntity.setPayWay("ALIPAY");
-        mircoPayEntity.setProfitSharing("Y");
+//        mircoPayEntity.setProfitSharing("Y");
         JSONArray goods = new JSONArray();
 //        // [{"quantity": "1", "goods_name": "看海", "goods_id": "100020", "price": "36800"}]
 //        JSONObject good = new JSONObject();
@@ -82,7 +82,7 @@ public class BaseTest {
         good3.put("goods_id","QT0000086");
         good3.put("price","2");
         goods.add(good3);
-//        mircoPayEntity.setGoodsDetail(goods);
+        mircoPayEntity.setGoodsDetail(goods);
 //        //
 //        JSONObject extendParams = new JSONObject();
 //        extendParams.put("hb_fq_num","3");
@@ -97,21 +97,20 @@ public class BaseTest {
     @Test
     public void orderquery(){
 
-
         OrderQueryEntity orderQueryEntity = new OrderQueryEntity();
 //        orderQueryEntity.setDeveloperId("82");
 //        orderQueryEntity.setDeveloperId("001");
-//        orderQueryEntity.setDeveloperKey("5e24d575ce275dd34b549ba80337053e");
-        orderQueryEntity.setDeveloperKey("1234567890");
-//        orderQueryEntity.setDeveloperKey("438d66903cf002573c3c0d02f4daa0a9");
+        orderQueryEntity.setDeveloperKey("5e24d575ce275dd34b549ba80337053e");
+//        orderQueryEntity.setDeveloperKey("1234567890");
+//        orderQueryEntity.setDeveloperKey("7b0fe61020cf41f38251308db8e763e3");
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         log.info(timestamp.toString());
         orderQueryEntity.setTimestamp(timestamp.toString());
-//        orderQueryEntity.setTradeNo("2019112722001412545718971268");
-        orderQueryEntity.setOutTradeNo("134505675022966631");
+//        orderQueryEntity.setTradeNo("2020083022001400091446623778");
+        orderQueryEntity.setOutTradeNo("134505675022966646");
         orderQueryEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
 //        orderQueryEntity.setCustomerId("8C5949A2E0B5F0A428E6687C9D413217");
-        orderQueryEntity.setStoreCode("001");
+//        orderQueryEntity.setStoreCode("001");
 //        orderQueryEntity.setPayChannel("CHINAUMS_YDQRCODEPAY");
 //        orderQueryEntity.setPayChannel("ZHONGMAPAY");
 //        orderQueryEntity.setPayChannel("ICBCPAY");
@@ -125,18 +124,18 @@ public class BaseTest {
         RefundEntity refundEntity = new RefundEntity();
 //        refundEntity.setDeveloperId("82");
 //        refundEntity.setDeveloperId("001");
-        refundEntity.setDeveloperKey("1234567890");
-//        refundEntity.setDeveloperKey("5e24d575ce275dd34b549ba80337053e");
+//        refundEntity.setDeveloperKey("1234567890");
+        refundEntity.setDeveloperKey("5e24d575ce275dd34b549ba80337053e");
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         refundEntity.setTimestamp(timestamp.toString());
-        refundEntity.setOutTradeNo("1100240000132");
-//        refundEntity.setTradeNo("20200403144757000031022321");
-        refundEntity.setOutRefundNo("1010500200077");
+        refundEntity.setOutTradeNo("134505675022966645");
+//        refundEntity.setTradeNo("2020082722001486341455610098");
+        refundEntity.setOutRefundNo("134505675022966645R");
         refundEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
 //        refundEntity.setCustomerId("8C5949A2E0B5F0A428E6687C9D413217");
 //        refundEntity.setStoreCode("001");
-        refundEntity.setRefundAmount(5);
-//        refundEntity.setTotalAmount(200);
+        refundEntity.setRefundAmount(2);
+        refundEntity.setTotalAmount(2);
 //        refundEntity.setPayChannel("ICBCPAY");
         piPayApi.refund(refundEntity);
 
@@ -147,17 +146,17 @@ public class BaseTest {
 
         RefundQueryEntity refundQueryEntity = new RefundQueryEntity();
 //        refundQueryEntity.setDeveloperId("001");
-        refundQueryEntity.setDeveloperKey("1234567890");
+//        refundQueryEntity.setDeveloperKey("1234567890");
 //        refundQueryEntity.setDeveloperId("82");
-//        refundQueryEntity.setDeveloperKey("5e24d575ce275dd34b549ba80337053e");
+        refundQueryEntity.setDeveloperKey("5e24d575ce275dd34b549ba80337053e");
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         log.info(timestamp.toString());
         refundQueryEntity.setTimestamp(timestamp.toString());
-//        refundQueryEntity.setTradeNo("");
-        refundQueryEntity.setOutTradeNo("1100240000132");
-        refundQueryEntity.setOutRefundNo("1010500200077");
-//        refundQueryEntity.setCustomerId("48B040170305CDD10CDA6A02B701415A");
+//        refundQueryEntity.setTradeNo("2020082722001486341455610098");
+        refundQueryEntity.setOutTradeNo("134505675022966645");
+        refundQueryEntity.setOutRefundNo("134505675022966645R");
         refundQueryEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
+//        refundQueryEntity.setCustomerId("80E4EDA3EB63B698EE39BDEA43C37F15");
 //        refundQueryEntity.setStoreCode("001");
 //        refundQueryEntity.setPayChannel("CHINAUMS_YDQRCODEPAY");
         piPayApi.refundquery(refundQueryEntity);
@@ -239,7 +238,7 @@ public class BaseTest {
         downloadBillEntity.setBillType("ALL");
         downloadBillEntity.setInterfaceType("pay.bill.merchant");
         downloadBillEntity.setStoreCode("958300000003");
-        downloadBillEntity.setPayChannel("HWCTONYIPAY");
+        downloadBillEntity.setPayChannel("");
 
         piPayApi.downloadBill(downloadBillEntity);
 
@@ -249,8 +248,8 @@ public class BaseTest {
     public void downloadAlipayBill(){
 
         JSONObject param = new JSONObject();
-        param.put("app_auth_token","201810BB8bdd82c3a87b4aa196dea8a44857cC78");
-        param.put("bill_date","2020-04");//月份
+        param.put("app_auth_token","201907BB235693a188674cf8a2d73b0076105D39");
+        param.put("bill_date","2020-06");//月份
         param.put("bill_type","trade");
         JSONObject res = piPayApi.downloadAlipayBill(param);
         System.out.println(res.toJSONString());
@@ -264,15 +263,15 @@ public class BaseTest {
         PrecreateEntity precreateEntity = new PrecreateEntity();
 //        mircoPayEntity.setDeveloperId("82");
 //        precreateEntity.setDeveloperId("001");
-//        precreateEntity.setDeveloperKey("1234567890");
-        precreateEntity.setDeveloperKey("0773ee5352964915b0b09708007780f4");
+        precreateEntity.setDeveloperKey("1234567890");
+//        precreateEntity.setDeveloperKey("7fd28ad27d0a46e7a3ed35f9121482c1");
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         log.info(timestamp.toString());
 //        precreateEntity.setTimestamp(timestamp.toString());
-        precreateEntity.setBody("圆周率收款");
+        precreateEntity.setBody("上海圆周率科技有限公司");
 //        precreateEntity.setOutTradeNo("1100050000164");
 //        precreateEntity.setTotalAmount(2);
-        precreateEntity.setCustomerId("082EE553FA2BEC609199C331ED7D94D2");
+        precreateEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
 //        precreateEntity.setStoreCode("80009940");
         precreateEntity.setStaticQrcode("Y");
 
