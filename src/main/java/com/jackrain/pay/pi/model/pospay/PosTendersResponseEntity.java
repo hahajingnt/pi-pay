@@ -97,6 +97,9 @@ public class PosTendersResponseEntity {
     @JSONField(name = "buyer_pay_amount")
     private String buyerPayAmount;
 
+    @JSONField(name = "internal_transaction_sn")
+    private String internalTransactionSn;
+
 
     public String toJSONString(){
         return JSON.toJSONString(this);

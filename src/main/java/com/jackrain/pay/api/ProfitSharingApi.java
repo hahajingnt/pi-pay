@@ -53,5 +53,11 @@ public interface ProfitSharingApi {
      */
     ProfitSharingQueryResponseEntity profitSharingQuery(ProfitSharingQueryEntity profitSharingQueryEntity);
 
+    /**
+     * 分账完结
+     * @param profitSharingFinishEntity
+     * @return
+     */
+    ProfitSharingFinishResponseEntity profitSharingFinish(ProfitSharingFinishEntity profitSharingFinishEntity);
 
 }

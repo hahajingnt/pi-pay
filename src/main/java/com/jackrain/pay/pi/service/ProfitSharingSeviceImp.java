@@ -76,6 +76,18 @@ public class ProfitSharingSeviceImp implements ProfitSharingApi {
         return ret;
     }
 
+    @Override
+    public ProfitSharingFinishResponseEntity profitSharingFinish(ProfitSharingFinishEntity profitSharingFinishEntity) {
+        //构建body
+        profitSharingFinishEntity.setSignWithMap(profitSharingFinishEntity.toMap());
+        JSONObject bodyObject = profitSharingFinishEntity.toJSONObject();
+        log.debug("bodyObject:" + bodyObject.toJSONString());
+        ProfitSharingFinishResponseEntity ret = post(ProfitSharingMethod.METHOD_PROFITSHARING_FINISH,bodyObject,ProfitSharingFinishResponseEntity.class);
+        log.debug("ret:" + ret.toJSONString());
+
+        return ret;
+    }
+
     private <T> T post(ProfitSharingMethod payMethod , JSONObject bodyObject,Class<T> tClass){
 
         PayRestTemplate payRestTemplate = PayRestTemplateConf.getInstance();
