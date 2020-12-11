@@ -44,7 +44,7 @@ public class POrderInfoResponseEntity {
     private String refundAmount;
 
     @JSONField(name = "bill_date")
-    private Date billDate;
+    private String billDate;
 
     @JSONField(name = "error_desc")
     private String errorDesc;

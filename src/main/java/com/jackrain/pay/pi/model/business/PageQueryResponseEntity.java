@@ -21,16 +21,16 @@ public class PageQueryResponseEntity extends PiPayResponseEntity {
     @Data
     public class ResponseEntity {
         @JSONField(name = "total")
-        private Long total;
+        private String total;
 
         @JSONField(name = "pages")
-        private Long pages;
+        private String pages;
 
         @JSONField(name = "page_size")
-        private Long pageSize;
+        private String pageSize;
 
         @JSONField(name = "current_page")
-        private Long currentPage;
+        private String currentPage;
 
         @JSONField(name = "customer_name")
         private String customerName;
