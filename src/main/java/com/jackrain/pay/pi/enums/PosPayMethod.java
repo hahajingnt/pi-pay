@@ -30,8 +30,11 @@ public enum PosPayMethod {
     /**
      *
      */
-    METHOD_REVERSE("pos/reverse");
-
+    METHOD_REVERSE("pos/reverse"),
+    /**
+     *
+     */
+    METHOD_REFUNDREVERSE("pos/refundreverse");
     private String value;
 
     PosPayMethod(String value) {

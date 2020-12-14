@@ -62,6 +62,13 @@ public interface PiPosPayApi {
     PosReverseResponseEntity reverse(PosReverseEntity posReverseEntity);
 
     /**
+     * 退款撤销
+     * @param posRefundReverseEntity
+     * @return
+     */
+    PosRefundReverseResponseEntity refundReverse(PosRefundReverseEntity posRefundReverseEntity);
+
+    /**
      * 下载账单
      */
     JSONObject downloadAlipayBill(JSONObject param);
