@@ -1,12 +1,10 @@
 package com.jackrain.pay.pi.service;
 
 import com.alibaba.fastjson.JSONObject;
-import com.jackrain.pay.api.PiPayApi;
-
 import com.jackrain.pay.api.PiPosPayApi;
-import com.jackrain.pay.pi.enums.PayMethod;
 import com.jackrain.pay.pi.enums.PosPayMethod;
-import com.jackrain.pay.pi.model.*;
+import com.jackrain.pay.pi.model.PiPayEntity;
+import com.jackrain.pay.pi.model.PiPayResponseEntity;
 import com.jackrain.pay.pi.model.pospay.*;
 import com.jackrain.pay.utils.MD5Utils;
 import com.jackrain.pay.web.PayRestTemplate;
@@ -21,13 +19,11 @@ import org.springframework.util.MultiValueMap;
 import java.net.URLEncoder;
 
 /**
- *
  * 移动支付实现
  *
  * @author: z.c
  * @since: 2019/11/25
  * create at : 2019/11/25 11:21 AM
- *
  */
 @Component
 @Slf4j
@@ -44,14 +40,11 @@ public class PiPosPaySeviceImp implements PiPosPayApi {
         //构建body
         posPreOrderEntity.setSignWithMap(posPreOrderEntity.toMap());
         JSONObject bodyObject = posPreOrderEntity.toJSONObject();
-        log.debug("bodyObject:" + bodyObject.toJSONString());
+        log.debug("bodyObject:" + bodyObject);
 
-        PosPreOrderResponseEntity ret = post(PosPayMethod.METHOD_PREORDER,bodyObject,PosPreOrderResponseEntity.class);
+        PosPreOrderResponseEntity ret = post(PosPayMethod.METHOD_PREORDER, bodyObject, PosPreOrderResponseEntity.class);
         log.debug("ret:" + ret.toJSONString());
         return ret;
-
-//        return new PosPreOrderResponseEntity();
-
     }
 
     @Override
@@ -60,7 +53,7 @@ public class PiPosPaySeviceImp implements PiPosPayApi {
         posOrderQueryEntity.setSignWithMap(posOrderQueryEntity.toMap());
         JSONObject bodyObject = posOrderQueryEntity.toJSONObject();
         log.debug("bodyObject:" + bodyObject.toJSONString());
-        PosOrderQueryResponseEntity ret = post(PosPayMethod.METHOD_ORDERQUERY,bodyObject,PosOrderQueryResponseEntity.class);
+        PosOrderQueryResponseEntity ret = post(PosPayMethod.METHOD_ORDERQUERY, bodyObject, PosOrderQueryResponseEntity.class);
         log.debug("ret:" + ret.toJSONString());
         return ret;
     }
@@ -71,7 +64,7 @@ public class PiPosPaySeviceImp implements PiPosPayApi {
         posRefundEntity.setSignWithMap(posRefundEntity.toMap());
         JSONObject bodyObject = posRefundEntity.toJSONObject();
         log.debug("bodyObject:" + bodyObject.toJSONString());
-        PosRefundResponseEntity ret = post(PosPayMethod.METHOD_REFUND,bodyObject,PosRefundResponseEntity.class);
+        PosRefundResponseEntity ret = post(PosPayMethod.METHOD_REFUND, bodyObject, PosRefundResponseEntity.class);
         log.debug("ret:" + ret.toJSONString());
         return ret;
     }
@@ -82,7 +75,7 @@ public class PiPosPaySeviceImp implements PiPosPayApi {
         posRefundQueryEntity.setSignWithMap(posRefundQueryEntity.toMap());
         JSONObject bodyObject = posRefundQueryEntity.toJSONObject();
         log.debug("bodyObject:" + bodyObject.toJSONString());
-        PosRefundQueryResponseEntity ret = post(PosPayMethod.METHOD_REFUNDQUERY,bodyObject,PosRefundQueryResponseEntity.class);
+        PosRefundQueryResponseEntity ret = post(PosPayMethod.METHOD_REFUNDQUERY, bodyObject, PosRefundQueryResponseEntity.class);
         log.debug("ret:" + ret.toJSONString());
         return ret;
     }
@@ -93,7 +86,18 @@ public class PiPosPaySeviceImp implements PiPosPayApi {
         posReverseEntity.setSignWithMap(posReverseEntity.toMap());
         JSONObject bodyObject = posReverseEntity.toJSONObject();
         log.debug("bodyObject:" + bodyObject.toJSONString());
-        PosReverseResponseEntity ret = post(PosPayMethod.METHOD_REVERSE,bodyObject, PosReverseResponseEntity.class);
+        PosReverseResponseEntity ret = post(PosPayMethod.METHOD_REVERSE, bodyObject, PosReverseResponseEntity.class);
+        log.debug("ret:" + ret.toJSONString());
+        return ret;
+    }
+
+    @Override
+    public PosRefundReverseResponseEntity refundReverse(PosRefundReverseEntity posRefundReverseEntity) {
+        //构建body
+        posRefundReverseEntity.setSignWithMap(posRefundReverseEntity.toMap());
+        JSONObject bodyObject = posRefundReverseEntity.toJSONObject();
+        log.debug("bodyObject:" + bodyObject.toJSONString());
+        PosRefundReverseResponseEntity ret = post(PosPayMethod.METHOD_REFUNDREVERSE, bodyObject, PosRefundReverseResponseEntity.class);
         log.debug("ret:" + ret.toJSONString());
         return ret;
     }
@@ -101,31 +105,31 @@ public class PiPosPaySeviceImp implements PiPosPayApi {
     @Override
     public JSONObject downloadAlipayBill(JSONObject param) {
 
-        String paramStr = PiPayEntity.getSignString(param,param.getString("developerKey"));
-        String sign = MD5Utils.MD5Encode(paramStr,"utf-8");
-        param.put("sign",sign);
+        String paramStr = PiPayEntity.getSignString(param, param.getString("developerKey"));
+        String sign = MD5Utils.MD5Encode(paramStr, "utf-8");
+        param.put("sign", sign);
 
         PayRestTemplate payRestTemplate = PayRestTemplateConf.getInstance();
         MultiValueMap<String, String> headers = new LinkedMultiValueMap<String, String>();
-        headers.add("Content-Type","application/x-www-form-urlencoded;charset=UTF-8");
+        headers.add("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
 //        Map<String,JSONObject> map = new HashMap<>();
-        headers.add("PARAMS",param.toJSONString());
-        JSONObject res = payRestTemplate.postForRequestParam(downbillUrl,headers,JSONObject.class);
+        headers.add("PARAMS", param.toJSONString());
+        JSONObject res = payRestTemplate.postForRequestParam(downbillUrl, headers, JSONObject.class);
 
         return res;
     }
 
-    private <T> T post(PosPayMethod payMethod , JSONObject bodyObject,Class<T> tClass){
+    private <T> T post(PosPayMethod payMethod, JSONObject bodyObject, Class<T> tClass) {
 
         PayRestTemplate payRestTemplate = PayRestTemplateConf.getInstance();
         MultiValueMap<String, String> headers = new LinkedMultiValueMap<String, String>();
-        headers.add("Content-Type","application/x-www-form-urlencoded;charset=UTF-8");
+        headers.add("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
 //        headers.add("Content-Type","application/json;charset=UTF-8");
         try {
-            String body = URLEncoder.encode(bodyObject.toJSONString(),"UTF-8");
-            HttpEntity<String> request = new HttpEntity(body,headers);
+            String body = URLEncoder.encode(bodyObject.toJSONString(), "UTF-8");
+            HttpEntity<String> request = new HttpEntity(body, headers);
             log.debug(url + " body:" + body);
-            T ret = payRestTemplate.postForRequestBody(url + "/pay/" + payMethod.getValue(),request,tClass);
+            T ret = payRestTemplate.postForRequestBody(url + "/pay/" + payMethod.getValue(), request, tClass);
             return ret;
         } catch (Exception e) {
             e.printStackTrace();

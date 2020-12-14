@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright [2018] [Alex/libo(liboware@gmail.com)]
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@ import com.jackrain.pay.pi.model.*;
 
 /**
  * 圆周率支付接口
+ *
  * @author zc
  * @version V1.0.0
  * @since V1.0.0
@@ -27,6 +28,7 @@ public interface PiPayApi {
 
     /**
      * 支付下单
+     *
      * @param mircoPayEntity
      * @return
      */
@@ -34,6 +36,7 @@ public interface PiPayApi {
 
     /**
      * 支付单查询
+     *
      * @param orderQueryEntity
      * @return
      */
@@ -41,6 +44,7 @@ public interface PiPayApi {
 
     /**
      * 退款
+     *
      * @param refundEntity
      * @return
      */
@@ -48,6 +52,7 @@ public interface PiPayApi {
 
     /**
      * 退款查询
+     *
      * @param refundQueryEntity
      * @return
      */
@@ -55,6 +60,7 @@ public interface PiPayApi {
 
     /**
      * 二维码支付
+     *
      * @param precreateEntity
      * @return
      */
@@ -62,17 +68,17 @@ public interface PiPayApi {
 
     /**
      * 撤销
+     *
      * @param reverseEntity
      * @return
      */
     ReverseResponseEntity reverse(ReverseEntity reverseEntity);
 
     /**
-     *
      * @param closeEntity
      * @return
      */
-    CloseResponseEntity closePay( CloseEntity closeEntity);
+    CloseResponseEntity closePay(CloseEntity closeEntity);
 
     /**
      * 下载账单
@@ -86,9 +92,43 @@ public interface PiPayApi {
 
     /**
      * 获取二维码地址
+     *
      * @param precreateEntity
      * @return
      */
     JSONObject qrcodeUrl(PrecreateEntity precreateEntity);
+
+    /**
+     * 静态二维码批量查询
+     *
+     * @param staticQrBatchQueryEntity
+     * @return
+     */
+    StaticQrBatchQueryResponseEntity staticQrBatchQuery(StaticQrBatchQueryEntity staticQrBatchQueryEntity);
+
+    /**
+     * 静态二维码同步订单
+     *
+     * @param staticQrNofiticationEntity
+     * @return
+     */
+    StaticQrNofiticationResponseEntity staticQrNofitication(StaticQrNofiticationEntity staticQrNofiticationEntity);
+
+    /**
+     * 静态二维码查询
+     *
+     * @param staticQrQueryEntity
+     * @return
+     */
+    StaticQrQueryResponseEntity staticQrQuery(StaticQrQueryEntity staticQrQueryEntity);
+
+    /**
+     * 批量提交
+     *
+     * @param batchSubmitEntity
+     * @return
+     */
+    BatchSubmitResponseEntity batchSubmit(BatchSubmitEntity batchSubmitEntity);
+
 
 }
