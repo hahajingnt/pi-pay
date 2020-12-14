@@ -59,7 +59,7 @@ public class PiPaySeviceImp implements PiPayApi {
         orderQueryEntity.setSignWithMap(orderQueryEntity.toMap());
         JSONObject bodyObject = orderQueryEntity.toJSONObject();
         log.debug("bodyObject:" + bodyObject.toJSONString());
-        OrderQueryResponseEntity ret = post(PayMethod.METHOD_ORDERQUERY,bodyObject,OrderQueryResponseEntity.class);
+        OrderQueryResponseEntity ret = postJson(PayMethod.METHOD_ORDERQUERY,bodyObject,OrderQueryResponseEntity.class);
         log.debug("ret:" + ret.toJSONString());
         return ret;
     }
@@ -71,7 +71,7 @@ public class PiPaySeviceImp implements PiPayApi {
         refundEntity.setSignWithMap(refundEntity.toMap());
         JSONObject bodyObject = refundEntity.toJSONObject();
         log.debug("bodyObject:" + bodyObject.toJSONString());
-        RefundResponseEntity ret = post(PayMethod.METHOD_REFUND,bodyObject,RefundResponseEntity.class);
+        RefundResponseEntity ret = postJson(PayMethod.METHOD_REFUND,bodyObject,RefundResponseEntity.class);
         log.debug("ret:" + ret.toJSONString());
         return ret;
     }
@@ -83,7 +83,7 @@ public class PiPaySeviceImp implements PiPayApi {
         refundQueryEntity.setSignWithMap(refundQueryEntity.toMap());
         JSONObject bodyObject = refundQueryEntity.toJSONObject();
         log.debug("bodyObject:" + bodyObject.toJSONString());
-        RefundQueryResponseEntity ret = post(PayMethod.METHOD_REFUNDQUERY,bodyObject,RefundQueryResponseEntity.class);
+        RefundQueryResponseEntity ret = postJson(PayMethod.METHOD_REFUNDQUERY,bodyObject,RefundQueryResponseEntity.class);
         log.debug("ret:" + ret.toJSONString());
         return ret;
     }
@@ -95,7 +95,7 @@ public class PiPaySeviceImp implements PiPayApi {
         precreateEntity.setSignWithMap(precreateEntity.toMap());
         JSONObject bodyObject = precreateEntity.toJSONObject();
         log.debug("bodyObject:" + bodyObject.toJSONString());
-        PrecreateResponseEntity ret = post(PayMethod.METHOD_PRECREATE,bodyObject,PrecreateResponseEntity.class);
+        PrecreateResponseEntity ret = postJson(PayMethod.METHOD_PRECREATE,bodyObject,PrecreateResponseEntity.class);
         log.debug("ret:" + ret.toJSONString());
         return ret;
     }
@@ -107,7 +107,7 @@ public class PiPaySeviceImp implements PiPayApi {
         reverseEntity.setSignWithMap(reverseEntity.toMap());
         JSONObject bodyObject = reverseEntity.toJSONObject();
         log.debug("bodyObject:" + bodyObject.toJSONString());
-        ReverseResponseEntity ret = post(PayMethod.METHOD_REVERSE,bodyObject, ReverseResponseEntity.class);
+        ReverseResponseEntity ret = postJson(PayMethod.METHOD_REVERSE,bodyObject, ReverseResponseEntity.class);
         log.debug("ret:" + ret.toJSONString());
         return ret;
     }
@@ -118,7 +118,7 @@ public class PiPaySeviceImp implements PiPayApi {
         closeEntity.setSignWithMap(closeEntity.toMap());
         JSONObject bodyObject = closeEntity.toJSONObject();
         log.debug("bodyObject:" + bodyObject.toJSONString());
-        CloseResponseEntity ret = post(PayMethod.METHOD_CLOSE,bodyObject, CloseResponseEntity.class);
+        CloseResponseEntity ret = postJson(PayMethod.METHOD_CLOSE,bodyObject, CloseResponseEntity.class);
         log.debug("ret:" + ret.toJSONString());
         return ret;
     }
@@ -129,7 +129,7 @@ public class PiPaySeviceImp implements PiPayApi {
         downloadBillEntity.setSignWithMap(downloadBillEntity.toMap());
         JSONObject bodyObject = downloadBillEntity.toJSONObject();
         log.debug("bodyObject:" + bodyObject.toJSONString());
-        DownloadBillResponseEntity ret = post(PayMethod.METHOD_DOWNLOAD_BILL,bodyObject, DownloadBillResponseEntity.class);
+        DownloadBillResponseEntity ret = postJson(PayMethod.METHOD_DOWNLOAD_BILL,bodyObject, DownloadBillResponseEntity.class);
         log.debug("ret:" + ret.toJSONString());
         return ret;
     }
