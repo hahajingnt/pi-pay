@@ -43,19 +43,19 @@ public class BaseTest {
 //        mircoPayEntity.setDeveloperId("82");
 //        mircoPayEntity.setDeveloperId("001");
         mircoPayEntity.setDeveloperKey("5e24d575ce275dd34b549ba80337053e");
-//        mircoPayEntity.setDeveloperKey("7cce2064feae494e841a4901453c4507");
+//        mircoPayEntity.setDeveloperKey("d3c44e6267274f96b955b4786407402a");
 //        mircoPayEntity.setDeveloperKey("1234567890");
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         log.info(timestamp.toString());
         mircoPayEntity.setTimestamp(timestamp.toString());
-        mircoPayEntity.setAuthCode("284162491887413994");
+        mircoPayEntity.setAuthCode("283020010745309756");
         mircoPayEntity.setBody("测试店");
-        mircoPayEntity.setOutTradeNo("134505675022966646");
+        mircoPayEntity.setOutTradeNo("134000000001492");
         mircoPayEntity.setTotalAmount(2);
         mircoPayEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
-//        mircoPayEntity.setCustomerId("4B2D9DE13536AC3A5B4675D2193B6F41");
+//        mircoPayEntity.setCustomerId("66DE4DBB86DDD8AA1D6C8A882765B678");
         mircoPayEntity.setStoreCode("001");
-//        mircoPayEntity.setPayChannel("HWCDIRECTPAY");
+//        mircoPayEntity.setPayChannel("HOTLINPAY");
 //        mircoPayEntity.setDeviceInfo("webPos");
 //        mircoPayEntity.setVipNo("-1");
 //        mircoPayEntity.setPayment("1");
@@ -107,7 +107,7 @@ public class BaseTest {
         log.info(timestamp.toString());
         orderQueryEntity.setTimestamp(timestamp.toString());
 //        orderQueryEntity.setTradeNo("2020083022001400091446623778");
-        orderQueryEntity.setOutTradeNo("134505675022966646");
+        orderQueryEntity.setOutTradeNo("13400000000149");
         orderQueryEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
 //        orderQueryEntity.setCustomerId("8C5949A2E0B5F0A428E6687C9D413217");
 //        orderQueryEntity.setStoreCode("001");
@@ -125,18 +125,18 @@ public class BaseTest {
 //        refundEntity.setDeveloperId("82");
 //        refundEntity.setDeveloperId("001");
 //        refundEntity.setDeveloperKey("1234567890");
-        refundEntity.setDeveloperKey("5e24d575ce275dd34b549ba80337053e");
+        refundEntity.setDeveloperKey("d3c44e6267274f96b955b4786407402a");
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         refundEntity.setTimestamp(timestamp.toString());
-        refundEntity.setOutTradeNo("134505675022966645");
+        refundEntity.setOutTradeNo("13400000000148");
 //        refundEntity.setTradeNo("2020082722001486341455610098");
-        refundEntity.setOutRefundNo("134505675022966645R");
-        refundEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
-//        refundEntity.setCustomerId("8C5949A2E0B5F0A428E6687C9D413217");
+        refundEntity.setOutRefundNo("13400000000148R");
+//        refundEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
+        refundEntity.setCustomerId("66DE4DBB86DDD8AA1D6C8A882765B678");
 //        refundEntity.setStoreCode("001");
-        refundEntity.setRefundAmount(2);
+        refundEntity.setRefundAmount(1);
         refundEntity.setTotalAmount(2);
-//        refundEntity.setPayChannel("ICBCPAY");
+        refundEntity.setPayChannel("HOTLINPAY");
         piPayApi.refund(refundEntity);
 
     }
@@ -148,17 +148,17 @@ public class BaseTest {
 //        refundQueryEntity.setDeveloperId("001");
 //        refundQueryEntity.setDeveloperKey("1234567890");
 //        refundQueryEntity.setDeveloperId("82");
-        refundQueryEntity.setDeveloperKey("5e24d575ce275dd34b549ba80337053e");
+        refundQueryEntity.setDeveloperKey("d3c44e6267274f96b955b4786407402a");
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         log.info(timestamp.toString());
         refundQueryEntity.setTimestamp(timestamp.toString());
 //        refundQueryEntity.setTradeNo("2020082722001486341455610098");
-        refundQueryEntity.setOutTradeNo("134505675022966645");
-        refundQueryEntity.setOutRefundNo("134505675022966645R");
-        refundQueryEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
-//        refundQueryEntity.setCustomerId("80E4EDA3EB63B698EE39BDEA43C37F15");
+        refundQueryEntity.setOutTradeNo("13400000000148");
+        refundQueryEntity.setOutRefundNo("13400000000148R");
+//        refundQueryEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
+        refundQueryEntity.setCustomerId("66DE4DBB86DDD8AA1D6C8A882765B678");
 //        refundQueryEntity.setStoreCode("001");
-//        refundQueryEntity.setPayChannel("CHINAUMS_YDQRCODEPAY");
+        refundQueryEntity.setPayChannel("HOTLINPAY");
         piPayApi.refundquery(refundQueryEntity);
 
     }
@@ -168,20 +168,20 @@ public class BaseTest {
 
         PrecreateEntity precreateEntity = new PrecreateEntity();
 //        mircoPayEntity.setDeveloperId("82");
-        precreateEntity.setDeveloperId("001");
+//        precreateEntity.setDeveloperId("001");
 //        precreateEntity.setDeveloperKey("1234567890");
         precreateEntity.setDeveloperKey("5e24d575ce275dd34b549ba80337053e");
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         log.info(timestamp.toString());
         precreateEntity.setTimestamp(timestamp.toString());
-        precreateEntity.setPrecreateType(PrecreateType.WEIXINPAY.getValue());
+        precreateEntity.setPrecreateType(PrecreateType.ALIPAY.getValue());
         precreateEntity.setBody("秋涛北路东方布艺睿致店");
-        precreateEntity.setOutTradeNo("1000050000107");
-        precreateEntity.setTotalAmount(5);
+        precreateEntity.setOutTradeNo("1000050000103");
+        precreateEntity.setTotalAmount(1);
         precreateEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
 //        precreateEntity.setCustomerId("8C5949A2E0B5F0A428E6687C9D413217");
         precreateEntity.setStoreCode("80009940");
-        precreateEntity.setNotifyUrl("http://pay-apps-web-qa.pay2.piplus.cn/pipay/callback_success");
+//        precreateEntity.setNotifyUrl("http://pay-apps-web-qa.pay2.piplus.cn/pipay/callback_success");
 //        precreateEntity.setPayChannel("CHINAUMS_YDQRCODEPAY");
         piPayApi.precreate(precreateEntity);
 
