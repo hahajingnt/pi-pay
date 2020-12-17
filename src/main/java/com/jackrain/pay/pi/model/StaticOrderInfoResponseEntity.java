@@ -34,6 +34,15 @@ public class StaticOrderInfoResponseEntity {
     @JSONField(name = "update_time")
     private String updateTime;
 
+    @JSONField(name = "platform_no")
+    private String platformNo;
+
+    @JSONField(name = "out_trade_no")
+    private String outTradeNo;
+
+    @JSONField(name = "stan")
+    private String stan;
+
     public String toJSONString() {
         return JSON.toJSONString(this);
     }

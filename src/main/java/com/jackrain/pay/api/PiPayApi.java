@@ -107,28 +107,19 @@ public interface PiPayApi {
     StaticQrBatchQueryResponseEntity staticQrBatchQuery(StaticQrBatchQueryEntity staticQrBatchQueryEntity);
 
     /**
-     * 静态二维码同步订单
-     *
-     * @param staticQrNofiticationEntity
-     * @return
-     */
-    StaticQrNofiticationResponseEntity staticQrNofitication(StaticQrNofiticationEntity staticQrNofiticationEntity);
-
-    /**
-     * 静态二维码查询
-     *
-     * @param staticQrQueryEntity
-     * @return
-     */
-    StaticQrQueryResponseEntity staticQrQuery(StaticQrQueryEntity staticQrQueryEntity);
-
-    /**
      * 批量提交
      *
      * @param batchSubmitEntity
      * @return
      */
     BatchSubmitResponseEntity batchSubmit(BatchSubmitEntity batchSubmitEntity);
+
+    /**
+     * 绑定订单
+     * @param staticQrBindOrderEntity
+     * @return
+     */
+    StaticQrBindOrderResponseEntity staticQrBindOrder(StaticQrBindOrderEntity staticQrBindOrderEntity);
 
 
 }

@@ -185,34 +185,23 @@ public class PiPaySeviceImp implements PiPayApi {
     }
 
     @Override
-    public StaticQrNofiticationResponseEntity staticQrNofitication(StaticQrNofiticationEntity staticQrNofiticationEntity) {
-        //构建body
-        staticQrNofiticationEntity.setSignWithMap(staticQrNofiticationEntity.toMap());
-        JSONObject bodyObject = staticQrNofiticationEntity.toJSONObject();
-        log.debug("bodyObject:" + bodyObject.toJSONString());
-        StaticQrNofiticationResponseEntity ret = post(PayMethod.METHOD_STATICQR_NOFITICATION, bodyObject, StaticQrNofiticationResponseEntity.class);
-        log.debug("ret:" + ret.toJSONString());
-        return ret;
-    }
-
-    @Override
-    public StaticQrQueryResponseEntity staticQrQuery(StaticQrQueryEntity staticQrQueryEntity) {
-        //构建body
-        staticQrQueryEntity.setSignWithMap(staticQrQueryEntity.toMap());
-        JSONObject bodyObject = staticQrQueryEntity.toJSONObject();
-        log.debug("bodyObject:" + bodyObject.toJSONString());
-        StaticQrQueryResponseEntity ret = post(PayMethod.METHOD_STATICQR_QUERY, bodyObject, StaticQrQueryResponseEntity.class);
-        log.debug("ret:" + ret.toJSONString());
-        return ret;
-    }
-
-    @Override
     public BatchSubmitResponseEntity batchSubmit(BatchSubmitEntity batchSubmitEntity) {
         //构建body
         batchSubmitEntity.setSignWithMap(batchSubmitEntity.toMap());
         JSONObject bodyObject = batchSubmitEntity.toJSONObject();
         log.debug("bodyObject:" + bodyObject.toJSONString());
         BatchSubmitResponseEntity ret = post(PayMethod.BATCH_SUBMIT, bodyObject, BatchSubmitResponseEntity.class);
+        log.debug("ret:" + ret.toJSONString());
+        return ret;
+    }
+
+    @Override
+    public StaticQrBindOrderResponseEntity staticQrBindOrder(StaticQrBindOrderEntity staticQrBindOrderEntity) {
+        //构建body
+        staticQrBindOrderEntity.setSignWithMap(staticQrBindOrderEntity.toMap());
+        JSONObject bodyObject = staticQrBindOrderEntity.toJSONObject();
+        log.debug("bodyObject:" + bodyObject.toJSONString());
+        StaticQrBindOrderResponseEntity ret = post(PayMethod.BIND_ORDER, bodyObject, StaticQrBindOrderResponseEntity.class);
         log.debug("ret:" + ret.toJSONString());
         return ret;
     }

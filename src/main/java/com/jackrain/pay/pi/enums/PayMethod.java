@@ -44,11 +44,9 @@ public enum PayMethod {
 
     METHOD_STATICQR_BATCHQUERY("staticqr/batchquery"),
 
-    METHOD_STATICQR_QUERY("staticqr/query"),
+    BATCH_SUBMIT("batchsubmit"),
 
-    METHOD_STATICQR_NOFITICATION("staticqr/nofitication"),
-
-    BATCH_SUBMIT("/batchsubmit");
+    BIND_ORDER("staticqr/bindOrder");
 
     private String value;
 

@@ -137,9 +137,9 @@ public class BaseTest {
 //        refundEntity.setDeveloperKey("5e24d575ce275dd34b549ba80337053e");
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         refundEntity.setTimestamp(timestamp.toString());
-        refundEntity.setOutTradeNo("12323424242125434");
-//        refundEntity.setTradeNo("P5FC73560B5736B00014F11F4");
-        refundEntity.setOutRefundNo("1234223434534544356");
+        refundEntity.setOutTradeNo("1608188807758857638");
+//        refundEntity.setTradeNo("P5FAA3812E358F0000131755F");
+        refundEntity.setOutRefundNo("12342245236384566434325733447");
         refundEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
 //        refundEntity.setCustomerId("8C5949A2E0B5F0A428E6687C9D413217");
 //        refundEntity.setStoreCode("001");
@@ -166,8 +166,8 @@ public class BaseTest {
 //        refundQueryEntity.setTradeNo("6662008316706034529171714048");
 //        refundQueryEntity.setOutTradeNo("1603182903615");
 //        refundQueryEntity.setTradeNo("4200000816202010283279997949");
-        refundQueryEntity.setOutTradeNo("12323424242125434");
-        refundQueryEntity.setOutRefundNo("1234223434534544356");
+        refundQueryEntity.setOutTradeNo("345464565756756");
+        refundQueryEntity.setOutRefundNo("12342245684566433447");
 //        refundQueryEntity.setCustomerId("48B040170305CDD10CDA6A02B701415A");
 //        refundQueryEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
         refundQueryEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
@@ -199,7 +199,7 @@ public class BaseTest {
 //        precreateEntity.setCustomerId("8C5949A2E0B5F0A428E6687C9D413217");
 //        precreateEntity.setStoreCode("003");
 //        precreateEntity.setNotifyUrl("http://pay-apps-web-qa.pay2.piplus.cn/pipay/callback_success");
-        precreateEntity.setPayChannel("fomopay");
+        precreateEntity.setPayChannel("shouqianba");
         PrecreateResponseEntity precreateResponseEntity = piPayApi.precreate(precreateEntity);
         System.out.println(precreateResponseEntity.toJSONString());
 
@@ -244,57 +244,40 @@ public class BaseTest {
     }
 
     @Test
-    public void staticQrNotification(){
-        StaticQrNofiticationEntity staticQrNofiticationEntity = new StaticQrNofiticationEntity();
-        staticQrNofiticationEntity.setDeveloperKey("1234567890");
-        staticQrNofiticationEntity.setDeveloperId("");
-        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        log.info(timestamp.toString());
-        staticQrNofiticationEntity.setTimestamp(timestamp.toString());
-        staticQrNofiticationEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
-        staticQrNofiticationEntity.setOutTradeNo("123234242421254342");
-        staticQrNofiticationEntity.setPayChannel("fomopay");
-        staticQrNofiticationEntity.setStoreCode("测试");
-        StaticQrNofiticationResponseEntity staticQrNofiticationResponseEntity = piPayApi.staticQrNofitication(staticQrNofiticationEntity);
-        System.out.println(staticQrNofiticationResponseEntity);
-    }
-
-    @Test
-    public void staticQrQuery(){
-        StaticQrQueryEntity staticQrQueryEntity = new StaticQrQueryEntity();
-        staticQrQueryEntity.setDeveloperKey("1234567890");
-        staticQrQueryEntity.setDeveloperId("");
-        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        log.info(timestamp.toString());
-        staticQrQueryEntity.setTimestamp(timestamp.toString());
-        staticQrQueryEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
-        staticQrQueryEntity.setOutTradeNo("123234242421254342");
-        staticQrQueryEntity.setPayChannel("fomopay");
-        staticQrQueryEntity.setStoreCode("123");
-        StaticQrQueryResponseEntity staticQrQueryResponseEntity = piPayApi.staticQrQuery(staticQrQueryEntity);
-        System.out.println(staticQrQueryResponseEntity);
-    }
-
-
-    @Test
     public void staticQrBatchQuery() {
         StaticQrBatchQueryEntity staticQrBatchQueryEntity = new StaticQrBatchQueryEntity();
         staticQrBatchQueryEntity.setDeveloperKey("1234567890");
         staticQrBatchQueryEntity.setDeveloperId("");
-        staticQrBatchQueryEntity.setLimit(1);
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         log.info(timestamp.toString());
         staticQrBatchQueryEntity.setTimestamp(timestamp.toString());
         staticQrBatchQueryEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
-        staticQrBatchQueryEntity.setPayChannel("atomepay");
+        staticQrBatchQueryEntity.setPayChannel("fomopay");
         staticQrBatchQueryEntity.setStoreCode("123");
-//        staticQrBatchQueryEntity.setUpdateAtMax("2020-12-02 14:45:08.175");
+//        staticQrBatchQueryEntity.setCreateAtMin("2020-09-02 14:45:08.175");
         StaticQrBatchQueryResponseEntity staticQrBatchQueryResponseEntity = piPayApi.staticQrBatchQuery(staticQrBatchQueryEntity);
         System.out.println(staticQrBatchQueryResponseEntity);
     }
 
     @Test
-    public void batchSubmit(){
+    public void staticQrBindOrder() {
+        StaticQrBindOrderEntity staticQrBindOrderEntity = new StaticQrBindOrderEntity();
+        staticQrBindOrderEntity.setDeveloperKey("1234567890");
+        staticQrBindOrderEntity.setDeveloperId("");
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        log.info(timestamp.toString());
+        staticQrBindOrderEntity.setTimestamp(timestamp.toString());
+        staticQrBindOrderEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
+        staticQrBindOrderEntity.setPayChannel("atomepay");
+        staticQrBindOrderEntity.setStoreCode("123");
+        staticQrBindOrderEntity.setOutTradeNo("54859834905834");
+        staticQrBindOrderEntity.setPlatformNo("1607417483764732581");
+        piPayApi.staticQrBindOrder(staticQrBindOrderEntity);
+
+    }
+
+    @Test
+    public void batchSubmit() {
         BatchSubmitEntity batchSubmitEntity = new BatchSubmitEntity();
         batchSubmitEntity.setDeveloperKey("1234567890");
         batchSubmitEntity.setDeveloperId("");
@@ -304,9 +287,9 @@ public class BaseTest {
         batchSubmitEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
         batchSubmitEntity.setPayChannel("fomopay");
         batchSubmitEntity.setStoreCode("123");
-        BatchSubmitResponseEntity batchSubmitResponseEntity = piPayApi.batchSubmit(batchSubmitEntity);
-        System.out.println(batchSubmitResponseEntity);
+        piPayApi.batchSubmit(batchSubmitEntity);
     }
+
 
     @Test
     public void downloadBill() {
@@ -448,7 +431,6 @@ public class BaseTest {
 
     }
 
-
     public class MyThread implements Runnable {
 
         Set<Long> set;
@@ -468,27 +450,5 @@ public class BaseTest {
     }
 
     private Set<Long> set;
-
-    @Test
-    public void test() {
-
-        set = new LinkedHashSet<>();
-
-        for (int i = 0; i < 20; i++) {
-            MyThread t = new MyThread(set);
-            t.run();
-        }
-
-    }
-
-    private static long getRandom(long n) {
-        long min = 1, max = 9;
-        for (int i = 1; i < n; i++) {
-            min *= 10;
-            max *= 10;
-        }
-        long rangeLong = (((long) (new Random().nextDouble() * (max - min)))) + min;
-        return rangeLong;
-    }
 
 }

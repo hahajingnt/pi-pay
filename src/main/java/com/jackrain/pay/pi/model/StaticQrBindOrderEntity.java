@@ -1,20 +1,21 @@
 package com.jackrain.pay.pi.model;
 
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.annotation.JSONField;
 import lombok.Data;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author: z.c
- * @since: 2019/11/25
- * create at : 2019/11/25 11:12 AM
+ * @Author:lin.jh
+ * @Date:2020/12/16 下午1:43
  */
 @Data
-public class StaticQrQueryEntity extends PiPayEntity {
+public class StaticQrBindOrderEntity extends PiPayEntity {
 
-    private String stan;
+
+    private String storeCode;
 
     private String outTradeNo;
 
@@ -22,12 +23,12 @@ public class StaticQrQueryEntity extends PiPayEntity {
 
     private String payChannel;
 
-    private String storeCode;
+    private String platformNo;
 
     public Map<String, String> toMap() {
         Map<String, String> map = new HashMap<>();
-        map.put("stan", getStan());
-        map.put("out_trade_no",getOutTradeNo());
+        map.put("platform_no", getPlatformNo());
+        map.put("out_trade_no", getOutTradeNo());
         map.put("customer_id",getCustomerId());
         map.put("pay_channel",getPayChannel());
         map.put("storeCode",getStoreCode());
@@ -37,11 +38,12 @@ public class StaticQrQueryEntity extends PiPayEntity {
     public JSONObject toJSONObject() {
 
         JSONObject paramObject = new JSONObject();
-        paramObject.put("stan", getStan());
-        paramObject.put("out_trade_no",getOutTradeNo());
+        paramObject.put("platform_no", getPlatformNo());
+        paramObject.put("out_trade_no", getOutTradeNo());
         paramObject.put("customer_id",getCustomerId());
         paramObject.put("pay_channel",getPayChannel());
         paramObject.put("storeCode",getStoreCode());
+
 
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("developer_id", getDeveloperId());
