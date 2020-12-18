@@ -54,7 +54,7 @@ public class PosBaseTest {
 
 
 //        posPreOrderEntity.setPayChannel("shouqianba");
-//        mircoPayEntity.setNotifyUrl("http://pay-apps-web-qa.pay2.piplus.cn/sqb/open/pos/order/callback");
+//        posPreOrderEntity.setNotifyUrl("http://pay-apps-web-qa.pay2.piplus.cn/sqb/open/pos/order/callback");
 
 //        mircoPayEntity.setDeviceInfo("webPos");
 //        mircoPayEntity.setVipNo("-1");
@@ -100,21 +100,15 @@ public class PosBaseTest {
         PosOrderQueryEntity orderQueryEntity = new PosOrderQueryEntity();
 //        orderQueryEntity.setDeveloperId("82");
 //        orderQueryEntity.setDeveloperId("001");
-
-//        orderQueryEntity.setDeveloperKey("5e24d575ce275dd34b549ba80337053e");
-//        orderQueryEntity.setDeveloperKey("ee505d85857845fd9c13f86137c10074");
-
         orderQueryEntity.setDeveloperKey("1234567890");
-
-//        orderQueryEntity.setDeveloperKey("438d66903cf002573c3c0d02f4daa0a9");
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         log.info(timestamp.toString());
         orderQueryEntity.setTimestamp(timestamp.toString());
 //        orderQueryEntity.setTradeNo("7903247730611100");
-        orderQueryEntity.setOutTradeNo("1607923271157");
+        orderQueryEntity.setOutTradeNo("12323424242125434");
         orderQueryEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
         orderQueryEntity.setStoreCode("JNBY");
-        orderQueryEntity.setPayChannel("shouqianba");
+        orderQueryEntity.setPayChannel("fomopay");
         orderQueryEntity.setCashRegisterNo("0");
 //        orderQueryEntity.setCashRegisterNo("1");
 //        orderQueryEntity.setNotifyUrl("");
@@ -131,12 +125,11 @@ public class PosBaseTest {
 //        refundEntity.setDeveloperId("82");
         refundEntity.setDeveloperId("001");
         refundEntity.setDeveloperKey("1234567890");
-//        refundEntity.setDeveloperKey("438d66903cf002573c3c0d02f4daa0a9");
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         refundEntity.setTimestamp(timestamp.toString());
         refundEntity.setOutTradeNo("1607923271157");
 //        refundEntity.setTradeNo("7903247730611100");
-        refundEntity.setOutRefundNo("4657575677");
+        refundEntity.setOutRefundNo("46575756772342234673");
 //        refundEntity.setStoreCode("JNBY");
         refundEntity.setSubject("退款测试");
         refundEntity.setRefundAmount(1);
@@ -164,8 +157,7 @@ public class PosBaseTest {
 //        refundQueryEntity.setTradeNo("");
 //        refundQueryEntity.setOutTradeNo("1000040000094");
         refundQueryEntity.setOutRefundNo("RE2012010038606");
-//        refundQueryEntity.setCustomerId("48B040170305CDD10CDA6A02B701415A");
-        refundQueryEntity.setCustomerId("676DCC32B6F437A7E50B5B9D6FF18DDE");
+        refundQueryEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
 //        refundQueryEntity.setStoreCode("001");
         refundQueryEntity.setStoreCode("CS000001");
         refundQueryEntity.setPayChannel("shouqianba");
@@ -186,7 +178,6 @@ public class PosBaseTest {
 
         reverseEntity.setOutTradeNo("1607495043796");
 //        reverseEntity.setTradeNo("200514999888000017");
-//        reverseEntity.setCustomerId("1905EDBC05E099876D0B044D40A9FD66");
         reverseEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
         reverseEntity.setStoreCode("JNBY");
         reverseEntity.setPayChannel("shouqianba");
@@ -194,7 +185,6 @@ public class PosBaseTest {
 //        reverseEntity.setOutTradeNo("A420102411n74165490001");
         reverseEntity.setOutReverseNo("2342253453431122");
 //        reverseEntity.setTradeNo("200514999888000017");
-//        reverseEntity.setCustomerId("1905EDBC05E099876D0B044D40A9FD66");
 //        reverseEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
 
         piPosPayApi.reverse(reverseEntity);
@@ -210,10 +200,9 @@ public class PosBaseTest {
         log.info(timestamp.toString());
         posRefundReverseEntity.setTimestamp(timestamp.toString());
 
-        posRefundReverseEntity.setRefundTradeNo("7903247730961681");
-//        posRefundReverseEntity.setOutRefundNo("4357984759234544456");
+//        posRefundReverseEntity.setRefundTradeNo("7903247730961502");
+        posRefundReverseEntity.setOutRefundNo("46575756772342234673");
 //        reverseEntity.setTradeNo("200514999888000017");
-//        reverseEntity.setCustomerId("1905EDBC05E099876D0B044D40A9FD66");
         posRefundReverseEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
         posRefundReverseEntity.setStoreCode("JNBY");
         posRefundReverseEntity.setPayChannel("shouqianba");
@@ -221,8 +210,6 @@ public class PosBaseTest {
 //        reverseEntity.setOutTradeNo("A420102411n74165490001");
 //        posRefundReverseEntity.setOutReverseNo("2342253453431122");
 //        reverseEntity.setTradeNo("200514999888000017");
-//        reverseEntity.setCustomerId("1905EDBC05E099876D0B044D40A9FD66");
-//        reverseEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
 
         PosRefundReverseResponseEntity posRefundReverseResponseEntity = piPosPayApi.refundReverse(posRefundReverseEntity);
         System.out.println(posRefundReverseResponseEntity);

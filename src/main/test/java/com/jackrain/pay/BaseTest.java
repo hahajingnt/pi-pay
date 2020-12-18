@@ -14,8 +14,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.sql.Timestamp;
-import java.util.LinkedHashSet;
-import java.util.Random;
 import java.util.Set;
 
 /**
@@ -53,10 +51,7 @@ public class BaseTest {
         mircoPayEntity.setBody("test");
         mircoPayEntity.setOutTradeNo(String.valueOf(System.currentTimeMillis()));
         mircoPayEntity.setTotalAmount(1);
-//        mircoPayEntity.setCustomerId("35CF73E39AFC68C019DB6B470490D28C");
         mircoPayEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
-//        mircoPayEntity.setCustomerId("CEEF66918325FBD60A7A9E2649D9FBAE");
-//        mircoPayEntity.setCustomerId("483C1B452D180EF1552397355A1AEC00");
 //        mircoPayEntity.setStoreCode("Z0211027");
 //        mircoPayEntity.setPayChannel("ICBCPAY");
 //        mircoPayEntity.setDeviceInfo("webPos");
@@ -107,16 +102,11 @@ public class BaseTest {
 //        orderQueryEntity.setDeveloperId("82");
 //        orderQueryEntity.setDeveloperId("001");
         orderQueryEntity.setDeveloperKey("1234567890");
-//        orderQueryEntity.setDeveloperKey("f16a85d560384e41b619fcef530b62b7");
-//        orderQueryEntity.setDeveloperKey("f16a85d560384e41b619fcef530b62b7");
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         log.info(timestamp.toString());
         orderQueryEntity.setTimestamp(timestamp.toString());
 //        orderQueryEntity.setTradeNo("2019112722001412545718971268");
         orderQueryEntity.setOutTradeNo("1607074066161");
-//        orderQueryEntity.setTradeNo("401520343378202009161232739459");
-//        orderQueryEntity.setCustomerId("CEEF66918325FBD60A7A9E2649D9FBAE");
-//        orderQueryEntity.setCustomerId("483C1B452D180EF1552397355A1AEC00");
         orderQueryEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
 //        orderQueryEntity.setStoreCode("001");
 //        orderQueryEntity.setPayChannel("CHINAUMS_YDQRCODEPAY");
@@ -134,14 +124,12 @@ public class BaseTest {
 //        refundEntity.setDeveloperId("82");
 //        refundEntity.setDeveloperId("001");
         refundEntity.setDeveloperKey("1234567890");
-//        refundEntity.setDeveloperKey("5e24d575ce275dd34b549ba80337053e");
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         refundEntity.setTimestamp(timestamp.toString());
         refundEntity.setOutTradeNo("1608188807758857638");
 //        refundEntity.setTradeNo("P5FAA3812E358F0000131755F");
         refundEntity.setOutRefundNo("12342245236384566434325733447");
         refundEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
-//        refundEntity.setCustomerId("8C5949A2E0B5F0A428E6687C9D413217");
 //        refundEntity.setStoreCode("001");
         refundEntity.setRefundAmount(1);
 //        refundEntity.setTotalAmount(200);
@@ -156,10 +144,6 @@ public class BaseTest {
         RefundQueryEntity refundQueryEntity = new RefundQueryEntity();
 //        refundQueryEntity.setDeveloperId("001");
         refundQueryEntity.setDeveloperKey("1234567890");
-//        refundQueryEntity.setDeveloperKey("d4cf9b76b24a49ff87ad3d972f20ace1");
-//        refundQueryEntity.setDeveloperKey("1234567890");
-//        refundQueryEntity.setDeveloperId("82");
-//        refundQueryEntity.setDeveloperKey("5e24d575ce275dd34b549ba80337053e");
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         log.info(timestamp.toString());
         refundQueryEntity.setTimestamp(timestamp.toString());
@@ -168,8 +152,6 @@ public class BaseTest {
 //        refundQueryEntity.setTradeNo("4200000816202010283279997949");
         refundQueryEntity.setOutTradeNo("345464565756756");
         refundQueryEntity.setOutRefundNo("12342245684566433447");
-//        refundQueryEntity.setCustomerId("48B040170305CDD10CDA6A02B701415A");
-//        refundQueryEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
         refundQueryEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
         refundQueryEntity.setStoreCode("001");
         refundQueryEntity.setPayChannel("fomopay");
@@ -184,8 +166,6 @@ public class BaseTest {
 //        mircoPayEntity.setDeveloperId("82");
         precreateEntity.setDeveloperId("001");
         precreateEntity.setDeveloperKey("1234567890");
-//        precreateEntity.setDeveloperKey("7fd28ad27d0a46e7a3ed35f9121482c1");
-//        precreateEntity.setDeveloperKey("5e24d575ce275dd34b549ba80337053e");
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         log.info(timestamp.toString());
         precreateEntity.setTimestamp(timestamp.toString());
@@ -196,7 +176,6 @@ public class BaseTest {
         precreateEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
         precreateEntity.setFeeType("SGD");
 //        precreateEntity.setTimeoutExpress(5000);
-//        precreateEntity.setCustomerId("8C5949A2E0B5F0A428E6687C9D413217");
 //        precreateEntity.setStoreCode("003");
 //        precreateEntity.setNotifyUrl("http://pay-apps-web-qa.pay2.piplus.cn/pipay/callback_success");
         precreateEntity.setPayChannel("shouqianba");
@@ -215,7 +194,6 @@ public class BaseTest {
         log.info(timestamp.toString());
         reverseEntity.setTimestamp(timestamp.toString());
         reverseEntity.setOutTradeNo("123234242421254342");
-//        reverseEntity.setCustomerId("1905EDBC05E099876D0B044D40A9FD66");
         reverseEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
         reverseEntity.setStoreCode("001");
         reverseEntity.setPayChannel("fomopay");
@@ -228,15 +206,12 @@ public class BaseTest {
 
         CloseEntity closeEntity = new CloseEntity();
 //        closeEntity.setDeveloperId("001");
-//        closeEntity.setDeveloperKey("1234567890");
-        closeEntity.setDeveloperKey("7cce2064feae494e841a4901453c4507");
+        closeEntity.setDeveloperKey("1234567890");
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         log.info(timestamp.toString());
         closeEntity.setTimestamp(timestamp.toString());
         closeEntity.setOutTradeNo("PA20092500043");
-//        reverseEntity.setCustomerId("1905EDBC05E099876D0B044D40A9FD66");
-//        closeEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
-        closeEntity.setCustomerId("42E9D37E7C74DA62642DB123F8B0987A");
+        closeEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
 //        closeEntity.setStoreCode("商户数据包001");
 //        closeEntity.setPayChannel("CHINAUMS_YDQRCODEPAY");
         piPayApi.closePay(closeEntity);
@@ -297,7 +272,6 @@ public class BaseTest {
         DownloadBillEntity downloadBillEntity = new DownloadBillEntity();
         downloadBillEntity.setDeveloperId("001");
         downloadBillEntity.setDeveloperKey("1234567890");
-//        reverseEntity.setCustomerId("1905EDBC05E099876D0B044D40A9FD66");
         downloadBillEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         downloadBillEntity.setTimestamp(timestamp.toString());
@@ -332,14 +306,13 @@ public class BaseTest {
 //        mircoPayEntity.setDeveloperId("82");
 //        precreateEntity.setDeveloperId("001");
 //        precreateEntity.setDeveloperKey("1234567890");
-        precreateEntity.setDeveloperKey("0773ee5352964915b0b09708007780f4");
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         log.info(timestamp.toString());
 //        precreateEntity.setTimestamp(timestamp.toString());
         precreateEntity.setBody("圆周率收款");
 //        precreateEntity.setOutTradeNo("1100050000164");
 //        precreateEntity.setTotalAmount(2);
-        precreateEntity.setCustomerId("082EE553FA2BEC609199C331ED7D94D2");
+        precreateEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
 //        precreateEntity.setStoreCode("80009940");
         precreateEntity.setStaticQrcode("Y");
 
@@ -414,20 +387,18 @@ public class BaseTest {
     @Test
     public void profitSharingFinish() {
 
-//        ProfitSharingFinishEntity profitSharingFinishEntity = new ProfitSharingFinishEntity();
-//        profitSharingFinishEntity.setDeveloperKey("73f8a591fffd4ebfa5eaade1b1e37657");
-//        profitSharingFinishEntity.setCustomerId("3E37E9D39763D32CFE7E32D21891816E");
-//        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-//        profitSharingFinishEntity.setTimestamp(timestamp.toString());
-////        profitSharingFinishEntity.setPayChannel("WEIXINPAY");
-//        profitSharingFinishEntity.setPayWay(PrecreateType.WEIXINPAY.getValue());
-//        profitSharingFinishEntity.setOutOrderNo("4200000754202009176851729718");
-//        profitSharingFinishEntity.setOutTradeNo("PA20091700112");
-//        profitSharingFinishEntity.setDescription("完结测试");
+        ProfitSharingFinishEntity profitSharingFinishEntity = new ProfitSharingFinishEntity();
+        profitSharingFinishEntity.setDeveloperKey("1234567890");
+        profitSharingFinishEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        profitSharingFinishEntity.setTimestamp(timestamp.toString());
+//        profitSharingFinishEntity.setPayChannel("WEIXINPAY");
+        profitSharingFinishEntity.setPayWay(PrecreateType.WEIXINPAY.getValue());
+        profitSharingFinishEntity.setOutOrderNo("4200000754202009176851729718");
+        profitSharingFinishEntity.setOutTradeNo("PA20091700112");
+        profitSharingFinishEntity.setDescription("完结测试");
 
-//        profitSharingApi.profitSharingFinish(profitSharingFinishEntity);
-        String test = "DK6Mgew3aOgoPKI3QVGCfyBDmwiXmj9QayS5VShrCHg1L86bViGkBFAg7/tXMJlsuCdoc2Ho5J+dNdImcUpaoCKAvZGrY2tYKSisWikArv8pgrdcmHVNUDIg3pf60IrHP50LyKLq8xcX9MrYZfk9AP/BuB5K0VS0n1CHwsE27OFA2T4/GHPAYd7o+OJ/eN8fho4l8NHKxkkSLNSt2EsWHSV6YTjM/fyNhR4TO/VSwQif3Qyosuv426jBKbWaSGUstubO0WTLXopLLzrmdCtYSVeaW+U4kMxt/wWe+Dnq0nXJBZuNXZHF9hopSbpqEV1g0V48STWp7M0ZW6eJUhOnOw==";
-        String test1 = "DK6Mgew3aOgoPKI3QVGCfyBDmwiXmj9QayS5VShrCHg1L86bViGkBFAg7/tXMJlsuCdoc2Ho5J+dNdImcUpaoCKAvZGrY2tYKSisWikArv8pgrdcmHVNUDIg3pf60IrHP50LyKLq8xcX9MrYZfk9AP/BuB5K0VS0n1CHwsE27OFA2T4/GHPAYd7o+OJ/eN8fho4l8NHKxkkSLNSt2EsWHSV6YTjM/fyNhR4TO/VSwQif3Qyosuv426jBKbWaSGUstubO0WTLXopLLzrmdCtYSVeaW+U4kMxt/wWe+Dnq0nXJBZuNXZHF9hopSbpqEV1g0V48STWp7M0ZW6eJUhOnOw==";
+        profitSharingApi.profitSharingFinish(profitSharingFinishEntity);
 
     }
 
