@@ -3,7 +3,6 @@ package com.jackrain.pay.pi.service;
 import com.alibaba.fastjson.JSONObject;
 import com.jackrain.pay.api.PiPayBusinessApi;
 import com.jackrain.pay.pi.enums.BusinessMethod;
-import com.jackrain.pay.pi.enums.PayMethod;
 import com.jackrain.pay.pi.model.PiPayResponseEntity;
 import com.jackrain.pay.pi.model.business.PageQueryEntity;
 import com.jackrain.pay.pi.model.business.PageQueryResponseEntity;
@@ -38,12 +37,12 @@ public class PiPayBusinessSeviceImp implements PiPayBusinessApi {
         pageQueryEntity.setSignWithMap(pageQueryEntity.toMap());
         JSONObject bodyObject = pageQueryEntity.toJSONObject();
         log.debug("bodyObject:" + bodyObject.toJSONString());
-        PageQueryResponseEntity ret = post(BusinessMethod.PAGE_QUERY, bodyObject, PageQueryResponseEntity.class);
+        PageQueryResponseEntity ret = postJson(BusinessMethod.PAGE_QUERY, bodyObject, PageQueryResponseEntity.class);
         log.debug("ret:" + ret.toJSONString());
         return ret;
     }
 
-    private <T> T post(BusinessMethod payMethod, JSONObject bodyObject, Class<T> tClass) {
+    private <T> T post(BusinessMethod businessMethod, JSONObject bodyObject, Class<T> tClass) {
 
         PayRestTemplate payRestTemplate = PayRestTemplateConf.getInstance();
         MultiValueMap<String, String> headers = new LinkedMultiValueMap<String, String>();
@@ -52,7 +51,7 @@ public class PiPayBusinessSeviceImp implements PiPayBusinessApi {
             String body = URLEncoder.encode(bodyObject.toJSONString(), "UTF-8");
             HttpEntity<String> request = new HttpEntity(body, headers);
             log.debug(url + " body:" + body);
-            T ret = payRestTemplate.postForRequestBody(url + "/pay/" + payMethod.getValue(), request, tClass);
+            T ret = payRestTemplate.postForRequestBody(url + "/pay/" + businessMethod.getValue(), request, tClass);
             return ret;
         } catch (Exception e) {
             e.printStackTrace();
@@ -71,14 +70,14 @@ public class PiPayBusinessSeviceImp implements PiPayBusinessApi {
         return null;
     }
 
-    private <T> T postJson(PayMethod payMethod, JSONObject bodyObject, Class<T> tClass) {
+    private <T> T postJson(BusinessMethod businessMethod, JSONObject bodyObject, Class<T> tClass) {
 
         PayRestTemplate payRestTemplate = PayRestTemplateConf.getInstance();
         MultiValueMap<String, String> headers = new LinkedMultiValueMap<String, String>();
         headers.add("Content-Type", "application/json;charset=UTF-8");
         try {
             HttpEntity<String> request = new HttpEntity(bodyObject, headers);
-            T ret = payRestTemplate.postForRequestBody(url + "/pay/" + payMethod.getValue(), request, tClass);
+            T ret = payRestTemplate.postForRequestBody(url + "/pay/" + businessMethod.getValue(), request, tClass);
             return ret;
         } catch (Exception e) {
             e.printStackTrace();

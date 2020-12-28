@@ -35,6 +35,15 @@ public class PageQueryResponseEntity extends PiPayResponseEntity {
         @JSONField(name = "customer_name")
         private String customerName;
 
+        @JSONField(name = "result_code")
+        private String resultCode;
+
+        @JSONField(name = "err_code")
+        private String errCode;
+
+        @JSONField(name = "err_msg")
+        private String errMsg;
+
         @JSONField(name = "order_info_array")
         private List<POrderInfoResponseEntity> orderInfoArray;
     }
