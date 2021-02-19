@@ -21,13 +21,21 @@ public class PageQueryEntity extends PiPayEntity {
     private Long currentPage;
 
     @JSONField(name = "customer_id")
-    private String CustomerId;
+    private String customerId;
+
+    @JSONField(name = "creation_date_min")
+    private String createDateMin;
+
+    @JSONField(name = "creation_date_max")
+    private String createDateMax;
 
     public Map<String, String> toMap() {
         Map<String, String> map = new HashMap<>();
         map.put("customer_id",getCustomerId());
         map.put("current_page",String.valueOf(getCurrentPage()));
         map.put("page_size",String.valueOf(getPageSize()));
+        map.put("creation_date_min",getCreateDateMin());
+        map.put("creation_date_max",getCreateDateMax());
 
         return map;
     }
@@ -38,6 +46,8 @@ public class PageQueryEntity extends PiPayEntity {
         paramObject.put("customer_id",getCustomerId());
         paramObject.put("current_page",String.valueOf(getCurrentPage()));
         paramObject.put("page_size",String.valueOf(getPageSize()));
+        paramObject.put("creation_date_min",getCreateDateMin());
+        paramObject.put("creation_date_max",getCreateDateMax());
 
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("developer_id", getDeveloperId());
