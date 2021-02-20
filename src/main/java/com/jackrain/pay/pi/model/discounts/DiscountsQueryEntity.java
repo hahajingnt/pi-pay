@@ -45,7 +45,6 @@ public class DiscountsQueryEntity extends PiPayEntity {
         map.put("customer_id",getCustomerId());
         map.put("pay_channel",getPayChannel());
         map.put("store_code",getStoreCode());
-        map.put("total_amount",String.valueOf(getTotalAmount()));
         map.put("out_trade_no",getOutTradeNo());
         map.put("trade_no",getTradeNo());
         return map;
@@ -57,7 +56,6 @@ public class DiscountsQueryEntity extends PiPayEntity {
         paramObject.put("customer_id",getCustomerId());
         paramObject.put("pay_channel",getPayChannel());
         paramObject.put("store_code",getStoreCode());
-        paramObject.put("total_amount",getTotalAmount());
         paramObject.put("out_trade_no",getOutTradeNo());
         paramObject.put("trade_no",getTradeNo());
 
