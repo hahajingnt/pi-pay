@@ -25,6 +25,8 @@ public class StaticQrBindOrderEntity extends PiPayEntity {
 
     private String platformNo;
 
+    private Integer totalAmount;
+
     public Map<String, String> toMap() {
         Map<String, String> map = new HashMap<>();
         map.put("platform_no", getPlatformNo());
@@ -32,6 +34,7 @@ public class StaticQrBindOrderEntity extends PiPayEntity {
         map.put("customer_id",getCustomerId());
         map.put("pay_channel",getPayChannel());
         map.put("storeCode",getStoreCode());
+        map.put("total_amount",String.valueOf(getTotalAmount()));
         return map;
     }
 
@@ -43,6 +46,8 @@ public class StaticQrBindOrderEntity extends PiPayEntity {
         paramObject.put("customer_id",getCustomerId());
         paramObject.put("pay_channel",getPayChannel());
         paramObject.put("storeCode",getStoreCode());
+        paramObject.put("total_amount",String.valueOf(getTotalAmount()));
+
 
 
         JSONObject jsonObject = new JSONObject();

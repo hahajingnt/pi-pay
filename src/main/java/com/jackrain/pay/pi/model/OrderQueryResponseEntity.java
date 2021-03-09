@@ -1,8 +1,11 @@
 package com.jackrain.pay.pi.model;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.annotation.JSONField;
 import lombok.Data;
+
+import java.util.List;
 
 /**
  *
@@ -77,6 +80,8 @@ public class OrderQueryResponseEntity extends PiPayResponseEntity {
         @JSONField(name = "err_msg")
         private String errMsg;
 
+        @JSONField(name = "fund_bill_list")
+        private List<FundBillListEntity> fundBillListEntityList;
 
     }
 

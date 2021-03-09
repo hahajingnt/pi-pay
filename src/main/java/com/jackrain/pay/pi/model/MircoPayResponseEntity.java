@@ -1,8 +1,11 @@
 package com.jackrain.pay.pi.model;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.annotation.JSONField;
 import lombok.Data;
+
+import java.util.List;
 
 /**
  *
@@ -61,6 +64,9 @@ public class MircoPayResponseEntity extends PiPayResponseEntity {
 
         @JSONField(name = "transaction_no")
         private String transactionNo;
+
+        @JSONField(name = "fund_bill_list")
+        private List<FundBillListEntity> fundBillListEntityList;
 
     }
 

@@ -55,7 +55,7 @@ public class StaticQrBatchQueryEntity extends PiPayEntity {
         map.put("update_at_max", getUpdateAtMax());
         map.put("customer_id",getCustomerId());
         map.put("pay_channel",getPayChannel());
-        map.put("storeCode",getStoreCode());
+        map.put("store_code",getStoreCode());
         return map;
     }
 
@@ -71,7 +71,7 @@ public class StaticQrBatchQueryEntity extends PiPayEntity {
         paramObject.put("update_at_max", getUpdateAtMax());
         paramObject.put("customer_id",getCustomerId());
         paramObject.put("pay_channel",getPayChannel());
-        paramObject.put("storeCode",getStoreCode());
+        paramObject.put("store_code",getStoreCode());
 
 
 
