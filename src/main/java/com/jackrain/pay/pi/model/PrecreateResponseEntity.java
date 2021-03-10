@@ -79,7 +79,7 @@ public class PrecreateResponseEntity extends PiPayResponseEntity {
          * 支付跳转链接 H5支付 trade_type为MWEB返回
          */
         @JSONField(name = "mweb_url")
-        private String mWebUrl;
+        private String mwebUrl;
 
     }
 
