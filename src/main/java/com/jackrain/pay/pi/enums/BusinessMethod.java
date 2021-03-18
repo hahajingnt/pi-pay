@@ -10,7 +10,9 @@ public enum BusinessMethod {
     /**
      *
      */
-    PAGE_QUERY("pagequery");
+    PAGE_QUERY("pagequery"),
+
+    REFUND_PAGE_QUERY("refund/pagequery");
 
     private String value;
 
