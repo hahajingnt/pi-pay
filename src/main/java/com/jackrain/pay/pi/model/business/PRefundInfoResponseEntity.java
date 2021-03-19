@@ -20,6 +20,12 @@ public class PRefundInfoResponseEntity {
     @JSONField(name = "refund_platform_no")
     private String refundPlatformNo;
 
+    @JSONField(name = "out_refund_no")
+    private String outRefundNo;
+
+    @JSONField(name = "refund_trade_no")
+    private String refundTradeNo;
+
     @JSONField(name = "store_code")
     private String storeCode;
 
@@ -34,6 +40,9 @@ public class PRefundInfoResponseEntity {
 
     @JSONField(name = "refund_amount")
     private String refundAmount;
+
+    @JSONField(name = "creationdate")
+    private String creationdate;
 
     @JSONField(name = "error_desc")
     private String errorDesc;
