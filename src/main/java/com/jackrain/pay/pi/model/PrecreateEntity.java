@@ -42,6 +42,8 @@ public class PrecreateEntity extends PiPayEntity {
 
     private String tradeType;
 
+    private String code;
+
     /**
      * Y/N 是否静态二维码
      */
@@ -78,6 +80,7 @@ public class PrecreateEntity extends PiPayEntity {
         map.put("profit_sharing",getProfitSharing());
         map.put("open_id",getOpenId());
         map.put("attach",getAttach());
+        map.put("code",getCode());
         map.put("sub_open_id",getSubOpenId());
         map.put("timeout_express",getTimeoutExpress() == null?null:getTimeoutExpress().toString());
         if (getGoodsDetail() != null){
@@ -106,6 +109,7 @@ public class PrecreateEntity extends PiPayEntity {
         paramObject.put("profit_sharing",getProfitSharing());
         paramObject.put("open_id",getOpenId());
         paramObject.put("attach",getAttach());
+        paramObject.put("code",getCode());
         paramObject.put("sub_open_id",getSubOpenId());
         paramObject.put("timeout_express",getTimeoutExpress() == null?null:getTimeoutExpress().toString());
         if (getGoodsDetail() != null){
