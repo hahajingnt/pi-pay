@@ -6,6 +6,8 @@ import com.jackrain.pay.pi.enums.BusinessMethod;
 import com.jackrain.pay.pi.model.PiPayResponseEntity;
 import com.jackrain.pay.pi.model.business.PageQueryEntity;
 import com.jackrain.pay.pi.model.business.PageQueryResponseEntity;
+import com.jackrain.pay.pi.model.business.RefundPageQueryEntity;
+import com.jackrain.pay.pi.model.business.RefundPageQueryResponseEntity;
 import com.jackrain.pay.web.PayRestTemplate;
 import com.jackrain.pay.web.PayRestTemplateConf;
 import lombok.extern.slf4j.Slf4j;
@@ -38,6 +40,17 @@ public class PiPayBusinessSeviceImp implements PiPayBusinessApi {
         JSONObject bodyObject = pageQueryEntity.toJSONObject();
         log.debug("bodyObject:" + bodyObject.toJSONString());
         PageQueryResponseEntity ret = postJson(BusinessMethod.PAGE_QUERY, bodyObject, PageQueryResponseEntity.class);
+        log.debug("ret:" + ret.toJSONString());
+        return ret;
+    }
+
+    @Override
+    public RefundPageQueryResponseEntity refundPageQuery(RefundPageQueryEntity refundPageQueryEntity) {
+        //构建body
+        refundPageQueryEntity.setSignWithMap(refundPageQueryEntity.toMap());
+        JSONObject bodyObject = refundPageQueryEntity.toJSONObject();
+        log.debug("bodyObject:" + bodyObject.toJSONString());
+        RefundPageQueryResponseEntity ret = postJson(BusinessMethod.REFUND_PAGE_QUERY, bodyObject, RefundPageQueryResponseEntity.class);
         log.debug("ret:" + ret.toJSONString());
         return ret;
     }

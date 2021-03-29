@@ -2,6 +2,8 @@ package com.jackrain.pay.api;
 
 import com.jackrain.pay.pi.model.business.PageQueryEntity;
 import com.jackrain.pay.pi.model.business.PageQueryResponseEntity;
+import com.jackrain.pay.pi.model.business.RefundPageQueryEntity;
+import com.jackrain.pay.pi.model.business.RefundPageQueryResponseEntity;
 
 /**
  * @Author:lin.jh
@@ -14,4 +16,11 @@ public interface PiPayBusinessApi {
      * @return
      */
     PageQueryResponseEntity pageQuery(PageQueryEntity pageQueryEntity);
+
+    /**
+     * 退款分页查询
+     * @param refundPageQueryEntity
+     * @return
+     */
+    RefundPageQueryResponseEntity refundPageQuery(RefundPageQueryEntity refundPageQueryEntity);
 }
