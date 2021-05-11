@@ -47,6 +47,8 @@ public class JumpRefundEntity extends PiPayEntity {
         map.put("pay_way",getPayWay());
         map.put("fee_type",getFeeType());
         map.put("out_refund_no",getOutRefundNo());
+        map.put("refund_amount",String.valueOf(getRefundAmount()));
+
         if (getGoodsDetail() != null){
             map.put("goods_detail",getGoodsDetail().toJSONString());
         }
@@ -66,6 +68,7 @@ public class JumpRefundEntity extends PiPayEntity {
         paramObject.put("fee_type",getFeeType());
         paramObject.put("pay_way",getPayWay());
         paramObject.put("out_refund_no",getOutRefundNo());
+        paramObject.put("refund_amount",getRefundAmount());
 
         if (getGoodsDetail() != null){
             paramObject.put("goods_detail",getGoodsDetail());
