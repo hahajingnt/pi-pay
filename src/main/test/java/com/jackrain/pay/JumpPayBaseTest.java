@@ -1,6 +1,9 @@
 package com.jackrain.pay;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.jackrain.pay.api.PiJumpPayApi;
+import com.jackrain.pay.api.PiPayApi;
 import com.jackrain.pay.api.ProfitSharingApi;
 import com.jackrain.pay.pi.model.*;
 import com.jackrain.pay.pi.model.jumppay.JumpPayEntity;
@@ -33,64 +36,31 @@ public class JumpPayBaseTest {
     @Autowired
     PiJumpPayApi piJumpPayApi;
 
+    @Autowired
+    PiPayApi piPayApi;
+
 
     @Test
     public void jumpPay() {
 
         JumpPayEntity jumpPayEntity = new JumpPayEntity();
-//        mircoPayEntity.setDeveloperId("82");
-//        mircoPayEntity.setDeveloperId("001");
         jumpPayEntity.setDeveloperKey("1234567890");
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         log.info(timestamp.toString());
         jumpPayEntity.setTimestamp(timestamp.toString());
-//        mircoPayEntity.setPayWay("ALIPAY");
         jumpPayEntity.setFeeType("CNY");
-//        mircoPayEntity.setStoreCode("CS98");
-//        mircoPayEntity.setStoreCode("sqbtest");
         jumpPayEntity.setOutTradeNo(String.valueOf(System.currentTimeMillis()));
         jumpPayEntity.setTotalAmount(1);
         jumpPayEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
-//        mircoPayEntity.setChannelStoreId("123123123");
-//        mircoPayEntity.setStoreCode("Z0211027");
-//        mircoPayEntity.setPayChannel("ICBCPAY");
-//        mircoPayEntity.setDeviceInfo("webPos");
-//        mircoPayEntity.setVipNo("-1");
-//        mircoPayEntity.setPayment("1");
-//        mircoPayEntity.setOperatorId("3429");
-//        mircoPayEntity.setPayWay("ALIPAY");
-//        mircoPayEntity.setProfitSharing("Y");
-//        JSONArray goods = new JSONArray();
-//        // [{"quantity": "1", "goods_name": "看海", "goods_id": "100020", "price": "36800"}]
-//        JSONObject good = new JSONObject();
-//        good.put("quantity","1");
-//        good.put("goods_name","喜力啤酒500ml瓶装");
-//        good.put("goods_id","PJXYA0006");
-//        good.put("price","5.7");
-//        goods.add(good);
-//        JSONObject good2 = new JSONObject();
-//        good2.put("quantity","3");
-//        good2.put("goods_name","喜力啤酒500ml瓶装");
-//        good2.put("goods_id","PJXYA0006");
-//        good2.put("price","5.7");
-//        goods.add(good2);
-//        JSONObject good3 = new JSONObject();
-//        good3.put("quantity", "1");
-//        good3.put("goods_name", "ttt）");
-//        good3.put("goods_id", "QT0000086");
-//        good3.put("price", "1");
-//        goods.add(good3);
-//        mircoPayEntity.setGoodsDetail(goods);
-//        mircoPayEntity.setExtendField("测试");
-//        //
-//        JSONObject extendParams = new JSONObject();
-//        extendParams.put("hb_fq_num","3");
-//        extendParams.put("hb_fq_seller_percent","0");
-//        mircoPayEntity.setExtendParams(extendParams);
-//        mircoPayEntity.setPayChannel("lakalapay");
-//        mircoPayEntity.setPayChannel("SHANDE_DIRECTPAY");
+        JSONArray goods = new JSONArray();
+        JSONObject good = new JSONObject();
+        good.put("quantity","1");
+        good.put("goods_name","喜力啤酒500ml瓶装");
+        good.put("goods_id","PJXYA0006");
+        good.put("price","1");
+        goods.add(good);
+//        jumpPayEntity.setGoodsDetail(goods);
         jumpPayEntity.setPayChannel("PLEASEQUICKPAY");
-//        mircoPayEntity.setChannelStoreId("0001");
         JumpPayResponseEntity piPayResponseEntity = piJumpPayApi.jumpPay(jumpPayEntity);
         System.out.println(piPayResponseEntity.toJSONString());
 
@@ -101,23 +71,71 @@ public class JumpPayBaseTest {
     public void jumpRefund() {
 
         JumpRefundEntity jumpRefundEntity = new JumpRefundEntity();
-//        refundEntity.setDeveloperId("82");
-//        refundEntity.setDeveloperId("001");
         jumpRefundEntity.setDeveloperKey("1234567890");
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         jumpRefundEntity.setTimestamp(timestamp.toString());
-        jumpRefundEntity.setOutTradeNo("1620266049878");
-//        refundEntity.setTradeNo("P5FAA3812E358F0000131755F");
-        jumpRefundEntity.setOutRefundNo("2340928349083204234");
+        jumpRefundEntity.setOutTradeNo("1620876202537");
+        jumpRefundEntity.setOutRefundNo("23434345345");
         jumpRefundEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
-//        refundEntity.setStoreCode("001");
         jumpRefundEntity.setRefundAmount(1);
-//        refundEntity.setTotalAmount(200);
-        jumpRefundEntity.setPayChannel("tonglianpay");
+        jumpRefundEntity.setPayChannel("PLEASEQUICKPAY");
+        JSONArray goods = new JSONArray();
+        JSONObject good = new JSONObject();
+        good.put("quantity","1");
+        good.put("goods_name","喜力啤酒500ml瓶装");
+        good.put("goods_id","PJXYA0006");
+        good.put("price","1");
+        goods.add(good);
+        jumpRefundEntity.setGoodsDetail(goods);
         JumpRefundResponseEntity jumpRefundResponseEntity = piJumpPayApi.jumpRefund(jumpRefundEntity);
         System.out.println(jumpRefundResponseEntity.toJSONString());
 
     }
 
+    @Test
+    public void orderquery() {
+        List<String> list = new ArrayList<>();
+
+        OrderQueryEntity orderQueryEntity = new OrderQueryEntity();
+//        orderQueryEntity.setDeveloperId("82");
+//        orderQueryEntity.setDeveloperId("001");
+        orderQueryEntity.setDeveloperKey("1234567890");
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        log.info(timestamp.toString());
+        orderQueryEntity.setTimestamp(timestamp.toString());
+//        orderQueryEntity.setTradeNo("lt2103200061949704275955713");
+        orderQueryEntity.setOutTradeNo("1620876202537");
+        orderQueryEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
+//        orderQueryEntity.setStoreCode("sqbtest");
+
+//        orderQueryEntity.setStoreCode("001");
+//        orderQueryEntity.setPayChannel("CHINAUMS_YDQRCODEPAY");
+//        orderQueryEntity.setPayChannel("ZHONGMAPAY");
+        orderQueryEntity.setPayChannel("PLEASEQUICKPAY");
+        OrderQueryResponseEntity orderQueryResponseEntity = piPayApi.orderquery(orderQueryEntity);
+        System.out.println(orderQueryResponseEntity.toJSONString());
+    }
+
+
+    @Test
+    public void refundquery() {
+
+        RefundQueryEntity refundQueryEntity = new RefundQueryEntity();
+//        refundQueryEntity.setDeveloperId("001");
+        refundQueryEntity.setDeveloperKey("1234567890");
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        log.info(timestamp.toString());
+        refundQueryEntity.setTimestamp(timestamp.toString());
+//        refundQueryEntity.setTradeNo("6662008316706034529171714048");
+//        refundQueryEntity.setOutTradeNo("1603182903615");
+//        refundQueryEntity.setTradeNo("4200000816202010283279997949");
+        refundQueryEntity.setOutTradeNo("1620876202537");
+        refundQueryEntity.setOutRefundNo("23434345345");
+        refundQueryEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
+//        refundQueryEntity.setStoreCode("001");
+        refundQueryEntity.setPayChannel("PLEASEQUICKPAY");
+        piPayApi.refundquery(refundQueryEntity);
+
+    }
 
 }
