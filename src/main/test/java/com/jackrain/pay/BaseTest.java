@@ -46,7 +46,7 @@ public class BaseTest {
         mircoPayEntity.setTimestamp(timestamp.toString());
         mircoPayEntity.setAuthCode("134930087772360639");
         mircoPayEntity.setPayWay("WEIXINPAY");
-        mircoPayEntity.setFeeType("SGD");
+        mircoPayEntity.setFeeType("CNY");
         mircoPayEntity.setStoreCode("100001");
         mircoPayEntity.setBody("test");
         mircoPayEntity.setOutTradeNo(String.valueOf(System.currentTimeMillis()));
@@ -174,7 +174,7 @@ public class BaseTest {
         precreateEntity.setOutTradeNo("2347954422634542");
         precreateEntity.setTotalAmount(1);
         precreateEntity.setCustomerId("C791722B9724DCF8E614B2B10B9A2913");
-        precreateEntity.setFeeType("SGD");
+        precreateEntity.setFeeType("CNY");
 //        precreateEntity.setTimeoutExpress(5000);
 //        precreateEntity.setStoreCode("003");
 //        precreateEntity.setNotifyUrl("http://pay-apps-web-qa.pay2.piplus.cn/pipay/callback_success");
@@ -401,25 +401,4 @@ public class BaseTest {
         profitSharingApi.profitSharingFinish(profitSharingFinishEntity);
 
     }
-
-    public class MyThread implements Runnable {
-
-        Set<Long> set;
-
-        public MyThread(Set<Long> set) {
-            this.set = set;
-        }
-
-        public void run() {
-//            for (int i = 0; i < 2; i++) {
-//                set.add(System.currentTimeMillis() + getRandom(8));
-//            }
-//            System.out.println(set.size());
-
-            orderquery();
-        }
-    }
-
-    private Set<Long> set;
-
 }
