@@ -60,6 +60,8 @@ public class PrecreateEntity extends PiPayEntity {
 
     private String attach;
 
+    private String feeType;
+
     /**
      * 该笔订单超时时间，逾期将关闭交易。单位为分钟，5代表5分钟
      */
@@ -78,6 +80,7 @@ public class PrecreateEntity extends PiPayEntity {
         map.put("static_qrcode",getStaticQrcode());
         map.put("trade_type",getTradeType());
         map.put("profit_sharing",getProfitSharing());
+        map.put("fee_type",getFeeType());
         map.put("open_id",getOpenId());
         map.put("attach",getAttach());
         map.put("code",getCode());
@@ -110,6 +113,7 @@ public class PrecreateEntity extends PiPayEntity {
         paramObject.put("open_id",getOpenId());
         paramObject.put("attach",getAttach());
         paramObject.put("code",getCode());
+        paramObject.put("fee_type",getFeeType());
         paramObject.put("sub_open_id",getSubOpenId());
         paramObject.put("timeout_express",getTimeoutExpress() == null?null:getTimeoutExpress().toString());
         if (getGoodsDetail() != null){

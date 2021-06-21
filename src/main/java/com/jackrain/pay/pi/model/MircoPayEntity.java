@@ -53,6 +53,8 @@ public class MircoPayEntity extends PiPayEntity {
 
     private String extendField;
 
+    private String feeType;
+
 //    private Double totalFee;
 //
 //    private String payWay;
@@ -80,6 +82,7 @@ public class MircoPayEntity extends PiPayEntity {
         map.put("profit_sharing",getProfitSharing());
         map.put("attach",getAttach());
         map.put("extend_field",getExtendField());
+        map.put("fee_type",getFeeType());
 //        map.put("pay_way",getPayWay());
 //        map.put("subject",getSubject());
 //        map.put("store_id",getStoreId());
@@ -113,6 +116,8 @@ public class MircoPayEntity extends PiPayEntity {
         paramObject.put("profit_sharing",getProfitSharing());
         paramObject.put("attach",getAttach());
         paramObject.put("extend_field",getExtendField());
+        paramObject.put("fee_type",getFeeType());
+
 //        paramObject.put("pay_way",getPayWay());
 //        paramObject.put("subject",getSubject());
 //        paramObject.put("store_id",getStoreId());
